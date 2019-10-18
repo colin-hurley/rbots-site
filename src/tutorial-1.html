@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<html>
+<head>
+	<title>Rbots Tutorial - Part One. Adding Rbots to a multiplayer level</title>
+</head>
+
+<BODY MARGINHEIGHT=3 MARGINWIDTH=3 TOPMARGIN=3 LEFTMARGIN=3 bgcolor="#000000" text="#C0C0C0" link="#00FFFF" vlink="#008080"" ALINK="#BFD9EA"><A NAME="#TOP">
+<p align="center"><a href="http://rbots.massassi.net"><img src="images/title.jpg" width="610" height="121" border="0" align="middle" alt="Rbots"></a></p>
+<FONT FACE="verdana, arial, helvetica" size=2>
+
+<center><h2>Rbots Tutorial - Part One<br>Adding Rbots 0.30 to a multiplayer level</h2></center>
+<p align="center"><FONT FACE="tahoma, verdana, arial, helvetica, sans-serif" size="2">Last updated 1st July 2001</FONT></p>
+<center><h3>Author - <a href="mailto: raynar@massassi.com">Raynar</a></h3></center>
+
+<h3>Introduction</h3>
+<p>
+Welcome to part one of the Rbots tutorial. This tutorial will cover how to add 'Rbots' to a multiplayer level. <a href="http://rbots.massassi.net/tutorial/tutorial-2.html">Part two</a> covers creating new bot characters. These tutorials cover both the Jedi Knight & Mysteries of the Sith versions of Rbots. As Rbots itself is still under alpha development, it is constantly evolving. This tutorial will also evolve to accomodate any changes.
+</p>
+<p>
+In order to use this tutorial, you must have some basic experience using JED. Skills like adding things, aligning things to the grid, adding cogs etc. If you can handle these simple tasks, you will have no trouble adding Rbots to your level. There are other tutorials available to help you understand using JED itself.
+</p>
+<a name="gettingstarted"></a>
+<br><br><h3>Getting started</h3>
+<p>
+Before we start, make sure you have a project directory set up. If you only have a 'gob' or 'goo' file of the level, extract it to a project directory using a program like Conman or CAGE. If you like, you can download the example project for JK <a href="http://rbots.massassi.net/downloads.php3">here</a>, and follow through each step of the tutorial. The example is before Rbots has been added.
+</p>
+<p>
+Keep in mind, there are several limitations to what the bots can and cannot do. You will need to experiment and perhaps modify the level (architecture and cogs) to accomodate these limitations.
+</p>
+<p>
+Get hold of the latest Rbots SDK for JK or MotS <a href="http://rbots.massassi.net/downloads.php3">here</a>, and unzip it over the top of your project directory replacing any files necessary. Once finished you should have the following files.
+</p>
+<p>
+<b>Jedi Knight</b>
+</p>
+<ul>
+<li>rbots-patch.gob - move this file to your patch commander directory, or someplace else. This file will need to be distributed with your finished project. It doesn't need to be part of the project itself.
+<li>master.tpl - The master template file. This contains the extra templates that Rbots needs. It defines each different bot as a separate template, bot saber attacks, as well as a modified 'Walkplayer'.
+</ul>
+<p>
+<b>Mysteries of the Sith</b>
+</p>
+<ul>
+<li>rbots-patch.goo - move this file to your patch commander directory, or someplace else. This file will need to be distributed with your finished project. It doesn't need to be part of the project itself.
+<li>mots.tpl - The master template file. This contains the extra templates that Rbots needs. It defines each different bot as a separate template, bot saber attacks, as well as a modified 'Walkplayer'.
+</ul>
+<p>
+<b>Both versions</b>
+</p>
+The Cog directory contains many cogs, but the only ones you need to concern yourself with at the moment are:
+<ul>
+<li>rbot-startup.cog - defines the default number of bots,  maximum number of bots, whether saber fighting, guns or force powers are allowed, if teams are supported and the starting difficulty level
+<li>rbot-nav.cog - defines the path nodes, path size, number of paths, and special path info, and the location of the power ups.
+<li>rbot-srv.cog - The first server side cog of the actual bot itself. Defines the 'botid' (explained later),  it's name, the template to use, it's team, force capabilities (not used yet) and the bot's characteristics (also not used yet)
+<li>rbot-srv2.cog - The second server side cog of the bot. 
+<li>rbot-cli.cog - The client side of the bot cog. Performs functions on the players local machine to reduce lag, such as change weapons, play sounds, key files, special effects etc.
+</ul>
+<p>The other cogs are discussed briefly in the <a href=#appendix>appendix</a></p>
+
+<br><br><h3>Putting it all together</h3>
+<p>
+Now that we have a rough idea of what each component does, let's put it all together. Open JED and load your level. Verify that the level works using the 'Save JKL & Test' facility, before proceeding.
+</p>
+<p>
+First off, within JED, open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select '<b>rbot-startup.cog</b>' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.
+</p>
+<p>
+Once placed, there are some details we need to setup.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/startup-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>numbots</b> - Default number of bots to start the level with.
+<li><b>maxbots</b> - Maximum number of bots the level can handle. (up to 32)
+<li><b>allowsaber</b> - Are the bots allowed to use sabers? Use: 1 for yes, 0 for no
+<li><b>allowguns</b> - Are the bots allowed to use guns? Use: 1 for yes, 0 for no
+<li><b>allowforce</b> - Are the bots allowed to use force powers? Use: 1 for yes, 0 for no
+<li><b>teams</b> - Is this level a teams match? Use: 1 for yes, 0 for no
+<li><b>difficulty</b> - The difficulty level to start the level with. (use 0 to 4)
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+
+<br><br><h3>Laying down the paths</h3>
+<p>
+In order for the bots to find their way around your level, you will need to create paths for them to follow. The current path system is complex, but also very versatile. You can create paths that are unidirectional (one way), bidirectional (both ways), looping, with intersections, that join end-to-end and crossover points. The paths can also store information on what powerups are closeby.
+</p>
+<p>
+Paths are set up by creating a series of ghost objects (path nodes) at regular intervals to form a path from one place to another. Rbots currently supports up to 100 ghost objects to use as path nodes. The example uses 10 paths with 10 path nodes each, but you can set this to anything you like as long as the total (paths * pathnodes) is less than or equal to 100. ie: 10 paths with 10 nodes each, 25 paths with 4 nodes each, 3 paths with 33 nodes each.
+</p>
+<p>
+Here are some examples. The white squares represent path nodes with the different colour lines representing different paths.
+</p>
+<img src="tutorial/path-ex2.gif"><img src="tutorial/path-ex3.gif"><img src="tutorial/path-ex1.gif"><img src="tutorial/path-ex4.gif">
+<p>
+Also, don't forget that you can use 3 dimensional paths - left, right, up and down.
+</p>
+<p>
+Now it's time to add the paths to your level. You will need to experiment a little to get the feel about where to place the path nodes and how far apart they should be. It is better to use too many path nodes than not enough. With the current system, the bot has about 6 seconds to get from one node to the next. If the bot hasn't reached it's next path node by then, it will send out a 'I'm lost!' message and will be told to go to the closest node, and start from there. Place plenty of path nodes around, so the bot has 'reference' nodes for when it gets lost.  Don't worry if this all sounds confusing, you should be able to work it out as you progress through this tutorial. 
+</p>
+<p>
+Have a look at your level and sketch out the most obvious paths. In our example level, there is a <B><FONT COLOR="RED">red</FONT></B> path and a <B><FONT COLOR="PURPLE">purple</FONT></B> path forming a loop around the outside edge of the level, a <B><FONT COLOR="BLUE">blue</FONT></B> path around the water where the shield pickups are, a <B><FONT COLOR="GREEN">green</FONT></B> path around the catwalk, and a <B><FONT COLOR="YELLOW">yellow</FONT></B> path for a nice swim up to get the concussion rifle.  There's a <B><FONT COLOR="PINK">pink</FONT></B> path to get the sequencer mines. We also have <B><FONT COLOR="ORANGE">orange</FONT></B> and <B><FONT COLOR="CYAN">cyan</FONT></B> paths for all the other areas we want the bots to use.
+</p>
+<table width="100%">
+<tr><td align="center"><img src="tutorial/ex-path1.gif"></td><td align="center"><img src="tutorial/ex-path2.gif"></td></tr>
+<tr><td align="center"><img src="tutorial/ex-path3.gif"></td><td align="center"><img src="tutorial/ex-path6.gif"></td></tr>
+<tr><td align="center"><img src="tutorial/ex-path4.gif"></td><td align="center"><img src="tutorial/ex-path7.gif"></td></tr>
+<tr><td align="center"><img src="tutorial/ex-path5.gif"></td></tr>
+
+</table>
+<p>
+The second shot of the <B><FONT COLOR="YELLOW">yellow</FONT></B> path above, is taken from the front view to demonstrate that it is indeed a 3 dimensional path. As you can see, we have already used 8 paths. It's usually a good idea to save a path or two for later experimentation. Using the guideline mentioned above, we can have up to 10 nodes to use with each path (10 paths * 10 path nodes = 100).
+</p>
+<p>
+From within JED, change to 'thing mode'. Working from the largest path first, start placing ghost objects along it. Place them about 'head' height from the floor, as the bot will 'look' at the next node as it moves towards it. Placing it at floor height will make the bot look at the floor when it moves along the path, and placing it too high will make it look at the ceiling instead. Make sure that each node is within sight of the next.
+</p>
+<p>
+The most important locations to place nodes are where the bots <b><i>change direction</i></b> and where <b><i>other paths intersect it</i></b>. Once these are done, continue placing the rest of the nodes in between. It is also perfectly fine to use any of the ghost objects already used in the level as path nodes. Place the nodes for each path, keeping a record of each ghost object's thing number, the sequence it is in along the path and what path it is located on.
+</p>
+<p>
+For intersecting paths, the node will belong to <b><i>both</i></b> paths.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/path-ex5.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<p>
+The <B><FONT COLOR="BLUE">blue</FONT></B> path would have 66, 67, 68, 69 as nodes.<br><br>The <B><FONT COLOR="RED">red</FONT></B> path would have 66, 85, 86, 69.
+</p>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+A word of warning - don't use the actual powerups or walkplayer objects for path nodes. Weird things will start to happen, as these items are not static - they will move around the level. Instead just create ghost objects at similar positions.
+</p>
+<p>
+Don't forget to place nodes near powerups if you want the bots to 'seek' them. You will need to specify the actual thing numbers of the powerups themselves later.
+</p>
+<p>
+Also, if you place nodes underwater, you need to add the 'Thing Flags' value, and set it to '0x2000000' or just click on the 'Submerged' option.
+</p>
+<p>
+We now have our paths laid out, and all we need to do now is tell the bots to use them.
+</p>
+<p>
+Open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select '<b>rbot-nav.cog</b>' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.</p>
+<p>
+Once placed, we need to enter all the information we've just collected.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/nav-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>node0 .. node99</b> - This is where the path nodes are entered.
+<li><b>pathsize</b> - The number of path nodes for each path
+<li><b>numpaths</b> - The number of paths themselves
+<li><b>inf0 .. inf9</b> - Extra path information, such as looping or unidirectional paths
+<li><b>weap0loc0, weap0loc1</b> - Thing numbers of the concussion rifle (up to 2)
+<li><b>weap1loc0, weap1loc1</b> - Thing numbers of the rail gun (up to 2)
+<li><b>weap2loc0, weap2loc1</b> - Thing numbers of the repeater rifle (up to 2)
+<li><b>weap3loc0, weap3loc1</b> - Thing numbers of the stormtrooper rifle (up to 2)
+<li><b>weap4loc0, weap4loc1</b> - Thing numbers of the crossbow (up to 2)
+<li><b>energyloc0 .. 4</b> - Thing numbers of energy cell powerups (up to 5)
+<li><b>powerloc0 .. 4</b> - Thing numbers of power cell powerups (up to 5)
+<li><b>raildetloc0, raildetloc1</b> - Thing numbers of rail detonator powerups (up to 2)
+<li><b>thrmdetloc0, thrmdetloc1</b> - Thing numbers of thermal detonator powerups (up to 2)
+<li><b>minesloc0, minesloc1</b> - Thing numbers of sequencer mine powerups (up to 2)
+<li><b>healthloc0 .. 4</b> - Thing numbers of health powerups (up to 5)
+<li><b>shieldloc0 .. 4</b> - Thing numbers of shield powerups (up to 5)
+</ul>
+<p>
+Anything not entered should be left at the default, which in most cases is '-1'.
+</p>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+The first thing to enter is the pathsize, & numpaths parameters. In our example we have 10 paths with 10 path nodes each. Numpaths would be set to 10 and pathsize set to 10. In order to enter the actual path node numbers themselves, you will need to do some simple maths to work out which sections of the 100 path nodes available belong to each path.
+</p>
+<p>
+Break up the total number of path nodes available by the number of nodes for each path you want to use. For our example, 10 paths with a path size of 10, use node0-node9 for the first path, and node10-node19, node20-node39, node40-node59, node60-node69 etc for the rest of the paths. If you wanted 3 paths with a path size of 33 nodes, use node0-32 for the first path, and node33-node65, and node66-node98 for the other 2. Get the idea?
+</p>
+<p>
+Enter each path node for all of the paths, completing one before starting the next. It doesn't matter if you don't use all of the allocated space for each path, just fill in the extras with '-1' which is the default anyway. Keep in mind that you can move, add or remove nodes to improve the bot's gameplay later.
+</p>
+<a name="pathinfo"></a>
+<p>Once the nodes have been specified, we need to modify the 'inf0-inf9' parameters. These are special information parameters for each of the paths. There are 4 possible options:
+<ul>
+<li>0 - nothing special (default)
+<li>1 - unidirectional - the bots can only move in the order you've listed the path nodes. Useful for things like dropping down a ledge.
+<li>2 - looping - when the bot reaches one end of the path, it will seek the other end.
+<li>3 - both unidirectional & looping.
+</ul>
+<p>
+In our example, the <B><FONT COLOR="GREEN">green</FONT></B> path, and the <B><FONT COLOR="YELLOW">yellow</FONT></B> path, inf2 & inf3 are set to '1', as they are one way paths. The rest are set to the default '0' as they have no special considerations.
+</p>
+<p>
+We now need to enter the thing numbers of the powerups we want the bot to seek. When faced with 2 intersecting paths, the bot will decide which way to go depending on what each path has to offer as long as there are path nodes near the powerups. The bot is also 'smart' enough to know not to seek a powerup if it's been taken and is waiting to respawn. If you don't enter the powerups here, all it means is that the bot will not seek them, but will still happily pick them up if it runs nearby.
+</p>
+<p>
+That's it! You've just completed the most complex part of the tutorial. The rest is quite simple. All that's left is adding the actual bots themselves.
+</p>
+
+<br><br><h3>Adding the bots</h3>
+<p>
+Now comes the fun part, adding all the bots. As mentioned <a href=#gettingstarted>above</a>, the actual bot code itself is divided into two 'server' components and a 'client' component. You must have one of each of these for each bot you wish to add to the level.
+</p>
+<p>
+Open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select '<b>rbot-srv.cog</b>' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.</p>
+<p>
+Once placed, we need to enter some information.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/srv-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>botid</b> - a unique number starting from 0 and incrementing by 1 for each bot
+<li><b>botname</b> - a number representing a descriptive name found in 'cogstrings.uni'
+<li><b>team</b> - the team number the bot belongs to. This also coresponds to the JK team numbering system. Use: 1 - red, 2 - yellow, 3 - blue, 4 - green
+<li><b>rtemp</b> - the template to be used for the bot
+<li><b>forceflags - force capabilities (not used yet)
+<li><b>characterflags - bot's characteristics (also not used yet)
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+First off, we need to give the bot an unique number to identify it. This is set by 'botid'. It is important that the bots have sequential numbers. The first bot needs to be '0', the next '1', the one after that '2', etc.
+</p>
+<p>
+To choose a name for the bot, open up the 'cogstrings.uni' file from the 'misc' directory in a text editor. Here's a snippet:
+</p>
+<p>
+"COG_01000" 0 "Yun"<br>
+"COG_01001" 0 "Sariss"<br>
+"COG_01002" 0 "Jerec"<br>
+</p>
+<p>
+Use '0' for the name 'Yun', '1' for 'Sariss' and '2' for 'Jerec'. You can use any name in the COG_01000 range (1000-1999), making sure that the number exists and has a name next to it in the 'cogstrings.uni' file.
+</p>
+<p>
+For teamplay, set the 'team' parameter to a number between 1 & 4, if you want human players to be able to join the team, or anything else for a 'bot only' team. If the 'teams' parameter for 'rbot-startup.cog' is set to 'no', it doesn't matter what setting you use here.
+</p>
+<p>
+Double-click on the box next to 'rtemp' to select the template you want to use for the bot. In the 'Resource Picker', under 'Templates', scroll to the end of the list. You can choose from any of the templates starting with 'rbot_' for the bot to use. Feel free to use the 'Show 3DO Preview' checkbox to see what the bot will look like. If there are no templates starting with 'rbot_', the SDK is not properly installed.
+</p>
+<p>
+Open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select '<b>rbot-srv2.cog</b>' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.</p>
+<p>
+Once placed, we only need to enter one parameter.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/srv2-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>botid</b> - matching 'botid' number of the server cog
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+Open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select '<b>rbot-cli.cog</b>' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.</p>
+<p>
+<b>Jedi Knight</b>
+</p>
+Once placed, we need to enter some information.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/cli-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>botid</b> - matching 'botid' number of the server cog
+<li><b>weapmesh0</b> - model of the character with weapon 0 (unlit saber) 
+<li><b>weapmesh1</b> - model of the character with weapon 1 (fists)
+<li><b>weapmesh2</b> - model of the character with weapon 2 (bryar)
+<li><b>weapmesh3</b> - model of the character with weapon 3 (st rifle)
+<li><b>weapmesh4</b> - model of the character with weapon 4 (thermal dets)
+<li><b>weapmesh5</b> - model of the character with weapon 5 (crossbow)
+<li><b>weapmesh6</b> - model of the character with weapon 6 (repeater)
+<li><b>weapmesh7</b> - model of the character with weapon 7 (rail gun)
+<li><b>weapmesh8</b> - model of the character with weapon 8 (sequencer mine)
+<li><b>weapmesh9</b> - model of the character with weapon 9 (concussion rifle)
+<li><b>weapmesh10</b> - model of the character with weapon 10 (lit saber)
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+<b>Mysteries of the Sith</b>
+</p>
+Once placed, we need to enter some information.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/cli-cog-mots.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>botid</b> - matching 'botid' number of the server cog
+<li><b>sabercolor</b> - the colour of the saber to use. Use: 0 - red, 1 - blue, 2 - green, 3 - orange, 4 - purple, 5 - yellow
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+Continue adding bots to your level using the 3 cogs 'rbot-srv.cog', 'rbot-srv2.cog' & 'rbot-cli.cog' for each bot, until you have the number of bots that you entered for the 'maxbots' parameter in the 'rbot-startup.cog'. In our example we have 4 bots in total.
+</p>
+<p>
+Here's what our finished 'Placed Cogs' window looks like:
+</p>
+<img src="tutorial/all-cogs.gif">
+<p>
+Notice there are 3 cogs for each bot. All with matching 'botid' numbers. The numbers <b><i>must</i></b> be sequential, starting from '0' and counting upwards, and not missing any numbers. This is important for the 'Add bot' feature to work correctly. You will also notice two extra cogs at the end of the list. The 'rbot-special.cog' allows the bots to use advanced features and will be explained in a future tutorial. The 'rbot-lightning.cog' is a custom lightning trap cog for Canyon Oasis, allowing the bots to activate the trap.
+</p>
+<p>
+If your level is set up for teamplay, it is also important to add each bot to each team in turn. For example, for a 2 team level, add one bot to the red team, add the next bot to the yellow team, add the next bot to the read team again and so on. This is also for the 'Add / Remove Bot' feature to work correctly. It will add bots from one team and then the next, rather than removing all bots from just the one team.
+</p>
+<p>
+Your level is now 'Rbots' ready. You will need to spend some time tweaking the various parameters of the cogs, and experimenting with the placement of the path nodes to get the best performance out of the bots. You can also download our finished example for JK <a href="http://rbots.massassi.net/downloads.php3">here</a>, to see how things all fit together. Enjoy!
+</p>
+
+<a name="appendix"></a> 
+<h3>Appendix</h3>
+
+<h4>Advanced Rbots use</h4>
+<li>rbot-special.cog - allows the bots to use advanced features. See the <a href="tutorial-3.html">Improving Performance</a> for details.
+
+<h4>Misc files</h4>
+<p>These other files are used automatically by the rbots code. Here's a very brief description:</p>
+<ul>
+<li>rbot-player.cog - modifed player cog
+<li>rbot-backpack.cog - handles backpacks created by both player and bots
+<li>rbot-botcam.cog - bot camera mode hotkey
+<li>rbot-difficulty.cog - bot difficulty hotkey
+<li>rbot-setup.cog - number of bots hotkey
+<li>force_pull.cog - modified force pull cog to handle bots
+<li>force_deadlysight.cog - modified force deadly sight cog to handle bots
+<li>force_grip.cog - modified force grip cog to handle bots
+<li>force_blinding.cog - modified force blinding cog to handle bots
+<li>rbot-door.cog - custom door cog
+<li>rbot-elev-switch.cog - custom elevator with switch cog
+<li>rbot-elev-nar.cog - custom elevator cog for Nar Shadaa
+<li>rbot-elev-valley.cog - custom elevator cog for Valley of the Jedi
+<li>rbot-ffield-nar.cog - custom force field cog
+<li>rbot-lightning.cog - custom lightning trap cog for Canyon Oasis
+<li>rbot-tdets-nar.cog - custom thermal det trap for Nar Shadaa
+<li>rbot-turret-nar.cog - custom turret trap for Nar Shadaa
+<li>rbot-0.ai - the Rbot 'ai' file
+<li>cogstrings.uni - lists each of the bots' descriptive names, and the 'death' messages
+<li>items.dat - altered to use the modified force cogs, and defines the hotkeys
+<li>jkstrings.uni - defines the descriptive names of the hotkeys
+</ul>
+</FONT>
+</body></html>

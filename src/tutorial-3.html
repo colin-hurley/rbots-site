@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<html>
+<head>
+	<title>Rbots Tutorial - Part Three. Improving performance</title>
+</head>
+
+<BODY MARGINHEIGHT=3 MARGINWIDTH=3 TOPMARGIN=3 LEFTMARGIN=3 bgcolor="#000000" text="#C0C0C0" link="#00FFFF" vlink="#008080"" ALINK="#BFD9EA"><A NAME="#TOP">
+<p align="center"><a href="http://rbots.massassi.net"><img src="images/title.jpg" width="610" height="121" border="0" align="middle" alt="Rbots"></a></p>
+<FONT FACE="verdana, arial, helvetica" size=2>
+
+<h2><p align="center">Rbots Tutorial - Part Three<br>Improving performance</p></h2>
+<p align="center"><FONT FACE="tahoma, verdana, arial, helvetica, sans-serif" size="2">Last updated 18th July 2001</FONT></p>
+<h3><p align="center">Author - <a href="mailto: raynar@massassi.com">Raynar</a></p></h3>
+
+<h3>Introduction</h3>
+<p>
+Welcome to part three of the Rbots tutorial. This tutorial will cover how to improve the bots' performance through better node placement, using the 'special' path nodes, and enabling the bots to use and react to custom level cogs. Make sure you have read through and understand <a href="http://rbots.massassi.net/tutorial/tutorial.html">part one</a> before attempting the techniques described here. These tutorials cover both the Jedi Knight & Mysteries of the Sith versions of Rbots. As Rbots itself is still under alpha development, it is constantly evolving. This tutorial will also evolve to accomodate any changes.
+</p>
+<p>
+In order to use this tutorial, you must have some basic editing experience. There are other tutorials available to help you understand the basics. The cog section requires some cog knowledge but you don't need to be an expert.
+</p>
+<a name="gettingstarted"></a>
+<br><h3>Getting started</h3>
+<p>
+So you've added Rbots to your level but you find that they don't perform very well. It could be that they fall off ledges, run past turnoffs, don't activate switches or use elevators, get stuck in corners, won't jump over ravines etc. It looks like your level needs some tweaking!
+</p>
+<a name="nodeplacement"></a>
+<br><h3>Better node placement</h3>
+<p>
+The number one problem when adding Rbots to a level is where to place the path nodes for maximum effect. The nodes themselves perform many functions and may need to be moved if any of the functions don't work as expected.
+</p>
+<ul>
+<li><B>Line of sight</B> - This is one of the more important aspects. Each node along a path must have 'line of sight' (be able to see it) with the next and previous nodes. When the bot reaches a node, after working out where the next node is, it will first turn to face it, and then proceed to move towards it. The bot needs a clear unobstructed path to the next node, and only has very limited intelligence to cope if something is in it's way.
+<p>For example, if the next node is out of the line of sight and happens to be just around a corner, the bot will move straight to where the next node is, regardless of the wall in front of it. The bot can't move through the wall, of course, so will appear to 'get stuck', until it works it out.</p>
+<p><TABLE>
+<TR><TD align=center>Corner viewed from above</TD><TD align=center>Corner viewed from above</TD></TR>
+<TR><TD><img src="tutorial/node-ex1.gif"></TD><TD><img src="tutorial/node-ex2.gif"></TD></TR>
+<TR><TD align=center>Correct node placement</TD><TD align=center>Incorrect node placement</TD></TR>
+</TABLE>
+<p><li><B>Distance apart</B> - The bot will move from node to node, but if for some reason the bot cannot reach the next node within a 6 second period, it will declare itself 'lost' and ask the navigation system for the closest node to get back on track. This is a failsafe mechanism, but can also hinder the bot's performance if the nodes are placed too far apart. If you're unsure if you have the nodes too far apart, use the botcam feature and time the bot as it moves from node to node. If the bot takes close to 6 seconds or indeed longer, you will need to move the nodes closer together.</p>
+<p><li><B>Bi-directional paths</B> - Keep in mind that in most cases the bot will be moving backwards and forwards along the path you have laid out with the path nodes. Try to visualize the bot moving from each direction. Are there any obsticals in the way if coming from one direction and not the other? Does 'line of sight' still apply to both directions? Are there any 'drop offs' or ledges that the bot would happily fall down one way but would be impossible to jump up from the other direction? You may need to move the path nodes to avoid these problems. If however, you really need the bots to move along the path in one direction only, you will need to <a href="tutorial.html#pathinfo">flag it as unidirectional</a>. All unidirectional paths <i>must</i> end in an intersection with another path.</p>
+<p><li><B>Intersecting paths</B> - Frequently you will need paths to intersect with other paths, to allow the bots to change from one path to another. It's a good idea to plan where you want your intersections before actually placing the rest of the nodes along the path. Place a node where you want the intersection to be and then build your paths from there.</p>
+<p><TABLE>
+<TR><TD align=center>T intersection viewed from above</TD><TD align=center>T intersection viewed from above</TD></TR>
+<TR><TD><img src="tutorial/node-ex3.gif"></TD><TD><img src="tutorial/node-ex4.gif"></TD></TR>
+<TR><TD align=center>Correct node placement</TD><TD align=center>Incorrect node placement</TD></TR>
+</TABLE>
+<p><li><B>Joining paths</B> - It is perfectly fine to join paths 'end to end', to create one long path, if you run out of path nodes by using just one path alone. I actually recommend using many small paths (eg: 10 paths with 10 nodes each), and just joining them if required, as this is a more effective way to use the path nodes, rather than creating very longs paths (eg: 4 paths with 25 nodes each) to begin with.</p>
+<p>
+<TABLE>
+<TR><TD align=center>Corner viewed from above</TD></TR>
+<TR><TD><img src="tutorial/node-ex5.gif"></TD></TR>
+</TABLE>
+<p><li><B>Ending paths</B> - It is also acceptable to have paths that don't join to another path at the end. When the bot moves along the path and it comes to the end, it will simply reverse direction and come back where it came from. However, as mentioned above, do not have unidirectional paths that do not end in an intersection with another path. Otherwise when the bot comes to the end of the path, it will try to reverse direction and come back, but because the path is flagged as unidirectional the bot isn't allowed to, and will simply stand there waiting further instructions.</p>
+<p><li><B>Ramps</B> - If the bot has fallen off a catwalk or ledge and it's impossible to get back up on to it, there is a failsafe mechanism to tell it to look elsewhere. This however can prevent the bot from moving up very steep ramps, as the system thinks the next node is outside it's capabilities. There is a neat trick to overcome this problem; flag the node's 'thingflags' as 'submerged'. The system knows that if a node is underwater, it can reach it regardless.</p>
+<p><TABLE>
+<TR><TD><img src="tutorial/thingflags.gif"></TD><TD><img src="tutorial/flageditor.gif"></TD></TR>
+</TABLE>
+</ul>
+<a name="specialpathnodes"></a>
+<br><h3>Special path nodes</h3>
+<p>Sometimes there are things that you would like the bot to do at certain locations, such as call an elevator, activate a trap, or even lay a sequencer mine. Other times there are things the bot <i>must</i> do in order to move along the path correctly, such as slowing down to move around a corner on a catwalk so as not to fall off or jump to make it across a ravine etc. This is where the new 'Special path node' system comes into play.</p>
+<p>First off, within JED, open up the 'Placed Cogs' window, click on 'Add Cog'. In the 'Resource Picker', select 'rbot-special.cog' from the 'cog\' directory. If the file is missing, the SDK is not properly installed.</p>
+<p>Once placed, there are some details we need to setup.</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/special-cog.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<ul>
+<li><b>sp0 .. sp19</b> - 20 path nodes which can be defined as 'special' path nodes
+<li><b>spinf0 .. spinf19</b> - 20 info settings to tell what to do when the bot reaches them
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>You can use any path node that is currently defined in a path as a 'special' path node. The one ghost object is used for both purposes. Just enter the ones you want in as 'sp0', 'sp1' etc. Once you've chosen which ones you want, you now need to enter the info tell the bots what to do when they reach the special path node. Here's the list of what the bot can currently do with special path nodes.</p>
+
+<b>Special path node properties</b><p>
+<table width="100%" border=1>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x01</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">1</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">full stop</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will come to a complete stop for a few seconds</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x02</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">2</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">slow</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will slow down to walking pace for a few seconds</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x04</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">4</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">jump forward</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will jump if it's running forward along the path</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x08</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">8</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">jump backward</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will jump if it's running backward along the path</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x10</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">16</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">lay mine</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will use this location for laying sequencer mines</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x20</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">32</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">activate forward</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will send an 'activated' message if it's running forward along the path (see custum cog section)</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x40</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">64</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">activate backward</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will send an 'activated' message if it's running backwards along the path (see custum cog section)</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x80</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">128</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">wait for arrive</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Not yet available</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x100</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">256</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">on elevator</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Not yet available</FONT></td></tr>
+<tr><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">0x200</FONT></td><td width="60"><FONT FACE="verdana, arial, helvetica" size=2 COLOR="YELLOW">512</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2 COLOR="CYAN">run fast</FONT></td><td><FONT FACE="verdana, arial, helvetica" size=2>Bot will increase running speed for a few seconds</FONT></td></tr>
+</table>
+
+<p>The property values are listed in hex, but I've also listed them in decimal to make things easier. If you want to use hex, you'll need a hex <-> decimal calculator. Luckily Windows comes with a handy calculator do do this for you. You can access it from <FONT COLOR="CYAN">Start Menu <FONT COLOR="YELLOW">-></FONT> Programs <FONT COLOR="YELLOW">-></FONT> Accessories <FONT COLOR="YELLOW">-></FONT> Calculator</FONT>. Now under the 'View' menu, select 'Scientific'. Your hex <-> decimal calculator is now available for you to use.</p>
+
+<p>All you need to do now is work out which of the above properties you want. It's perfectly acceptable for the one special path node to perform several of these properties. All you need to do is add up the hex or decimal values of each property you want to use and use the sum as the info for that node. The value has to be in decimal, so if you calculate it in hex, you will need to convert it back to decimal anyway.</p>
+<p>eg: Node 14 needs to run fast (0x200 hex or 512 decimal), and jump (0x4 hex or 4 decimal). Add up 0x200 + 0x4 = 0x204, or in decimal add up 512 + 4 = 516.  You now need to enter 86 as the value for sp[0..19], and 516 as the value for the matching spinf[0..19]. </p>
+<p>If the node only uses the one property, you don't need to do any calculations at all and just enter the value in decimal from the table above.</p>
+
+<TABLE>
+<TR>
+<TD><img src="tutorial/special-cog2.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+In our example screen from above:
+<ul>
+<li><b>spinf0, spinf1, spinf2, spinf3, spinf4, spinf5, spinf6, spinf7, spinf9 & spinf10</b> are all set to <FONT COLOR="YELLOW">2</FONT> which, as you can see from the table above, will tell the bot to slow down when it reaches any of these nodes.
+<li><b>spinf8</b> is set to <FONT COLOR="YELLOW">36</FONT> which is made up from adding two properties from the table above: 'activate forward' (<FONT COLOR="YELLOW">32</FONT>) + 'jump' (<FONT COLOR="YELLOW">4</FONT>).
+<li><b>spinf11</b> is set to <FONT COLOR="YELLOW">4</FONT> which from the table above is 'jump'
+</ul>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+
+<p>As you can see there is quite a variety of properties you can get the bot to do. If you come across a situation where none of the above properties will do what you need, feel free to request additional properties.</p>
+
+<p><i>Please note that it is no longer necessary to use the special path nodes to get the bots to open doors. The bots will now open them automatically as soon as they touch them.</i></p>
+
+<a name="customcogs"></a>
+<br><h3>Custom cogs</h3>
+<p>Nearly every multiplayer level these days comes with a least one cog to make the level interesting to play, whether it's a trap that can be activated, a force field, an elevator or simply to open doors. This is fine until you try to convert the level to support bots, which you then will quickly discover that most cogs do not affect the bots at all. The bots won't activate the trap, or receive damage when they touch the force field. The elevator won't move when the bots step on them, and the doors stubbornly refuse to operate when the bots use them. All it takes is a little cog experience and you can fix these problems.</p>
+<p>The most important thing to realise is that these cogs were written for <i>players</i> to use, not <i>actors</i> which the bots are. By default, all messages are only generated by players, so we need to modify the cogs slightly to accomodate this difference.</p>
+<p>In most cases all that is necessary is to add <FONT COLOR="CYAN">mask=0x404</FONT> to any things or surfaces that would normally generate a 'touched' message. This new value allows both players and actors to generate messages from that thing or surface. Adding this to a forcefield cog for example will now allow the bot to be damaged when it touches it. You can also add this mask value for sectors that have an 'entered' message generated.</p>
+<p>Quite a few cogs need something activated in order for them to work, for example the lightning trap in Canyon Oasis. All you need to do is add is a 'trigger' message to the symbols section, and add the trigger section.</p>
+<p>
+<FONT COLOR="YELLOW">
+<pre>
+trigger:
+  if (getsourceref() == 11030)
+  {
+    if (VectorDist(GetThingPos(GetParam(1)), SurfaceCenter(switch0)) < 0.3) call activate; // bot is close enough to activate
+  }
+  return;
+</pre>
+</FONT>
+<p>This is where the special path node system integrates with the custom cogs. If you define a special path node as 'activate', when the bot gets close to it, it will send a 'trigger 11030' message to all cogs. The custom cog picks up this trigger message, checks to see if it's close to the surface it's supposed to activate and then simply calls the activate section of the cog as if the player activated it.</p>
+<p>You will of course find that many cogs will need to be significantly altered before they can used by the bots. You may need to change the way the cog works, or opt for a different solution altogether.If you have any difficulty at all modifying cogs for the bots to use, feel free to drop me a line asking for assistance.</p>
+<p>If you have any standard door cogs in your level, you can use the ready-made 'rbot-door.cog' which is already included in the SDK. This is for a single door only.</p>
+<p>
+<p>
+</body></html>

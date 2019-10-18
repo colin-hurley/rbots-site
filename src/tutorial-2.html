@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<html>
+<head>
+	<title>Rbots Tutorial - Part Two. Creating new bots</title>
+</head>
+
+<BODY MARGINHEIGHT=3 MARGINWIDTH=3 TOPMARGIN=3 LEFTMARGIN=3 bgcolor="#000000" text="#C0C0C0" link="#00FFFF" vlink="#008080"" ALINK="#BFD9EA"><A NAME="#TOP">
+<p align="center"><a href="http://rbots.massassi.net"><img src="images/title.jpg" width="610" height="121" border="0" align="middle" alt="Rbots"></a></p>
+<FONT FACE="verdana, arial, helvetica" size=2>
+
+<h2><p align="center">Rbots Tutorial - Part Two<br>Creating new bots</p></h2>
+<p align="center"><FONT FACE="tahoma, verdana, arial, helvetica, sans-serif" size="2">Last updated 1st July 2001</FONT></p>
+<h3><p align="center">Author - <a href="mailto: raynar@massassi.com">Raynar</a></p></h3>
+
+<h3>Introduction</h3>
+<p>
+Welcome to part two of the Rbots tutorial. This tutorial will cover how to create new bot characters. Make sure you have read through and understand <a href="http://rbots.massassi.net/tutorial/tutorial.html">part one</a> before attempting the techiniques described here. These tutorials cover both the Jedi Knight & Mysteries of the Sith versions of Rbots. As Rbots itself is still under alpha development, it is constantly evolving. This tutorial will also evolve to accomodate any changes.
+</p>
+<p>
+In order to use this tutorial, you must have some basic editing experience. There are other tutorials available to help you understand the basics.
+</p>
+<a name="gettingstarted"></a>
+<br><h3>Getting started</h3>
+<p>
+Before we start, make sure you have a project directory set up with Rbots already installed as described in part one of the tutorial.
+</p>
+<p>
+First of all, find the multiplayer model you want to use as a bot character. You can use any multiplayer model at all, whether they are included with JK itself or supplied from elsewhere.
+</p>
+<p>
+To use the models that come with JK, use Conman or Cage to extract the file 'models.dat' from 'res2.gob'. This file lists each of the available mulitplayer characters, with it's filename and sound files. Write down the details of each character you want to use.
+</p>
+<br><br><h3>Putting it all together</h3>
+<p>
+<b>Jedi Knight</b>
+</p>
+<p>
+The Rbots JK version requires separate models of every character holding every weapon. To create new characters involves manually copying and pasting the actual 3do text files, both the character and weapon, while making other changes to the 3do files, to make a finished model ready to Rbots. This needs to be done 11 times (one for each weapon) for each character! As you can imagine this is quite a time consuming process, and was the main reason why only three bots were included in the earlier releases.
+</p>
+<p>
+To make this process less painful, there is now a new <a href="http://rbots.massassi.net/downloads.php3">wizard utility</a> available, to do the work for you. Here's how to use it:
+</p>
+<p>
+If you want to use one of the models that come with JK, extract the filename that you found in 'models.dat' from 'res2.gob'. Feel free to rename the file to whatever you like and copy the file to a convenient directory.
+</p>
+<p>
+Open up the wizard utility & click 'Next'.
+</p>
+<TABLE>
+<TR>
+<TD><img src="tutorial/wizard-1.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<p>
+Select the model you want to convert, and click 'Next'. We'll use the 'bossk' multiplayer model for this example.
+</p>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<br>
+<TABLE>
+<TR>
+<TD><img src="tutorial/wizard-2.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<p>
+Multiselect all the weapons you want to use with the new character, and click 'Next'. This example will use all the normal weapons and the purple saber.
+</p>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<br>
+<TABLE>
+<TR>
+<TD><img src="tutorial/wizard-3.gif"></TD>
+<TD VALIGN="TOP"><FONT FACE="verdana, arial, helvetica" size=2>
+<p>
+Select where you would like all the new files to be saved, and click 'Next'.
+</p>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<p>
+The wizard will then create the new models ready for you to use. Now copy the new files to the 3DO directory in your project.
+</p>
+<p>
+<b>Mysteries of the Sith</b>
+</p>
+<p>
+The Rbots MotS version can use exisiting multiplayer models directly and has none of the restrictions above. Just copy the model to the 3DO directory in your project.
+</p>
+<p>
+<b>Both JK & MotS</b>
+</p>
+<p>
+We now need to create a template for our new character model. Open up the 'master.tpl' or 'mots.tpl' file in a text editor. Copy and paste the last three lines.
+</p>
+<p>
+<FONT COLOR="YELLOW">
+# DESC:     Rbot Yellow Kyle<br>
+# BBOX: -.031992 -.017003 -.134424 .032032 .024487 .073659<br>
+rbot_kylegold    _humanactor        model3d=yel-2.3do size=0.060400 movesize=0.060400 puppet=ky.pup soundclass=kyMP1.snd mass=....
+</FONT>
+</p>
+<p>
+Modify the new info to suit your new character. There are only four items you will need to change: description, template name, model3d & soundclass. Use the sound file that we found earlier in 'models.dat'.  If the new model doesn't have a new sound file, just use the default 'ky.snd'.
+</p>
+<p>
+<FONT COLOR="YELLOW">
+# DESC:     Rbot Bossk<br>
+# BBOX: -.031992 -.017003 -.134424 .032032 .024487 .073659<br>
+rbot_bossk       _humanactor        model3d=bossk-2.3do size=0.060400 movesize=0.060400 puppet=ky.pup soundclass=kybossk.snd mass=....
+</FONT>
+</p>
+<p>
+<b>Jedi Knight</b>
+</p>
+<p>
+You will need to set 'model3d' to one of the new character model filenames - any one of them will do.
+</p>
+<p>
+<b>Mysteries of the Sith</b>
+</p>
+<p>
+Set 'model3d' to the actual filename of the new character model.
+</p>
+<p>
+<b>Both JK & MotS</b>
+</p>
+<p>
+All we need to do now is to give our new bot a name. Open up the 'cogstrings.uni' file from the 'misc' directory in a text editor. At the top of the file you will see something like this:
+</p>
+<p>
+<FONT COLOR="YELLOW">
+MSGS 80
+</FONT>
+</p>
+<p>
+Add 1 to the msgs count, so that it should read:
+</p>
+<p>
+<FONT COLOR="YELLOW">
+MSGS 81
+</FONT>
+</p>
+<p>
+Look further down the file until you find the last line before 'COG_02000'. Copy and paste the previous line.
+</p>
+<p>
+<FONT COLOR="YELLOW">
+"COG_01045" 0 "Hellcat"
+</FONT>
+</p>
+<p>
+Add 1 to the cog string number and modify the name to whatever you like. Once finished it should look something like this:
+</p>
+<p>
+<FONT COLOR="YELLOW">
+"COG_01046" 0 "Super Bot"
+</FONT>
+</p>
+<p>
+Finished! You are now ready to use your new bot character with the Rbots SDK. You can review how to add bots to your level, in part one of the tutorial. Enjoy!
+</p>
+</FONT>
+</body></html>
