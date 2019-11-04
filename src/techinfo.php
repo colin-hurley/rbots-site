@@ -108,13 +108,18 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td width="80">800</td><td>Game options - sent from startup cog to bot</td></tr>
 <tr><td width="80">900</td><td>Respawn bot - sent from startup cog to bot</td></tr>
 <tr><td width="80">901</td><td>Kill & remove bot - sent from startup cog to bot</td></tr>
+<tr><td width="80">910</td><td>Add bot - sent from hotkey to startup cog</td></tr>
+<tr><td width="80">920</td><td>Remove bot - sent from hotkey to startup cog</td></tr>
 <tr><td width="80">930</td><td>Set Difficulty level - sent from hotkey to all bots</td></tr>
 <tr><td width="80">940</td><td>Cycle number of bots - sent from hotkey to startup cog</td></tr>
-<tr><td width="80">950</td><td>Confirmed respawn - sent from each bot back to startup cog</td></tr>
+<tr><td width="80">950</td><td>Bot has respawned</td></tr>
 <tr><td width="80">960</td><td>Query thing number - sent to bot</td></tr>
 <tr><td width="80">970</td><td>Return thing number - sent from bot</td></tr>
 <tr><td width="80">990</td><td>Player killed by bot - sent from player cog to startup cog</td></tr>
 <tr><td width="80">1000</td><td>Bot died</td></tr>
+<tr><td width="80">1001</td><td>Used by CTF</td></tr>
+<tr><td width="80">1002</td><td>Used by CTF</td></tr>
+<tr><td width="80">1003</td><td>Used by CTF</td></tr>
 </table>
 <p>
 Effects sent from bot server cog to local bot client cog
@@ -128,44 +133,47 @@ Parameters: (0 - botid    1 - Thing number)
 <tr><td width="80">2004</td><td>Create smoke effects at bot position - used for deadly sight</td></tr>
 <tr><td width="80">2100</td><td>Play saber block animation</td></tr>
 <tr><td width="80">2101</td><td>Stop saber block animation</td></tr>
-<tr><td width="80">3000</td><td>Fire weapon 0</td></tr>
-<tr><td width="80">3001</td><td>Fire weapon 1</td></tr>
-<tr><td width="80">3002</td><td>Fire weapon 2</td></tr>
-<tr><td width="80">3003</td><td>Fire weapon 3</td></tr>
-<tr><td width="80">3004</td><td>Fire weapon 4</td></tr>
-<tr><td width="80">3005</td><td>Fire weapon 5</td></tr>
-<tr><td width="80">3006</td><td>Fire weapon 6</td></tr>
-<tr><td width="80">3007</td><td>Fire weapon 7</td></tr>
-<tr><td width="80">3008</td><td>Fire weapon 8</td></tr>
-<tr><td width="80">3009</td><td>Fire weapon 9</td></tr>
 </table>
 <br>
 <table width="100%">
-<tr><td width="80">10000</td><td>Bot requests new position</td></tr>
-<tr><td width="80">10010</td><td>Nav cog busy - ask caller to retry</td></tr>
+<tr><td width="80">10000</td><td>Bot requests new position from nav cog</td></tr>
+<tr><td width="80">10001</td><td>Used by CTF</td></tr>
 <tr><td width="80">11000</td><td>New position info sent from nav cog to bot</td></tr>
-<tr><td width="80">11010</td><td>Special info request from bot to special cog</td></tr>
-<tr><td width="80">11020</td><td>Special info reply from special cog to bot</td></tr>
+<tr><td width="80">11010</td><td>Bot arrived at node, sent from srv</td></tr>
+<tr><td width="80">11020</td><td>Special info sent from special cog to bot</td></tr>
 <tr><td width="80">11030</td><td>Activate message sent to other cogs</td></tr>
-<tr><td width="80">11040</td><td>Arrived message sent from other cogs to bot</td></tr>
+<tr><td width="80">11040</td><td>Wait for arrival message sent from other cogs to bot</td></tr>
+<tr><td width="80">11050</td><td>Arrival message sent from other cogs to bot</td></tr>
+<tr><td width="80">11060</td><td>Request for special nav info sent from nav cog</td></tr>
+<tr><td width="80">11070</td><td>Response for special nav info sent to nav cog</td></tr>
 <tr><td width="80">12000</td><td>Backpack taken by bot</td></tr>
-<tr><td width="80">12001</td><td>Backpack info sent to bot</td></tr>
-<tr><td width="80">12002</td><td>Backpack info sent to bot</td></tr>
-<tr><td width="80">12003</td><td>Backpack info sent to bot</td></tr>
-<tr><td width="80">12004</td><td>Backpack info sent to bot</td></tr>
-<tr><td width="80">12010</td><td>Backpack info sent from bot or player</td></tr>
-<tr><td width="80">12011</td><td>Backpack info sent from bot or player</td></tr>
-<tr><td width="80">12012</td><td>Backpack info sent from bot or player</td></tr>
-<tr><td width="80">12013</td><td>Backpack info sent from bot or player</td></tr>
+<tr><td width="80">12001</td><td>Backpack info sent to bot (part 1)</td></tr>
+<tr><td width="80">12002</td><td>Backpack info sent to bot (part 2)</td></tr>
+<tr><td width="80">12003</td><td>Backpack info sent to bot (part 3)</td></tr>
+<tr><td width="80">12004</td><td>Backpack info sent to bot (part 4)</td></tr>
+<tr><td width="80">12010</td><td>Backpack info sent from bot or player (part 1)</td></tr>
+<tr><td width="80">12011</td><td>Backpack info sent from bot or player (part 2)</td></tr>
+<tr><td width="80">12012</td><td>Backpack info sent from bot or player (part 3)</td></tr>
+<tr><td width="80">12013</td><td>Backpack info sent from bot or player (part 4)</td></tr>
 <tr><td width="80">12200</td><td>Bot touched CTF flag</td></tr>
 <tr><td width="80">12210</td><td>Update CTF info</td></tr>
-<tr><td width="80">15010</td><td>Enter hotkey pressed</td></tr>
-<tr><td width="80">15020</td><td>Setup hotkey pressed</td></tr>
-<tr><td width="80">15030</td><td>Request botname</td></tr>
-<tr><td width="80">15040</td><td>Returned botname</td></tr>
-<tr><td width="80">15050</td><td>Pause/unpause bots during menu</td></tr>
-<tr><td width="80">15060</td><td>Pause/unpause players during menu</td></tr>
-<tr><td width="80">15070</td><td>Difficulty hotkey pressed</td></tr>
+<tr><td width="80">15080</td><td>Update selected bot (used by hotkeys)</td></tr>
+<tr><td width="80">100000</td><td>Bot srv cog requests update from srv2 cog</td></tr>
+<tr><td width="80">100001</td><td>Bot srv2 cog responds to update request (part 1)</td></tr>
+<tr><td width="80">100002</td><td>Bot srv2 cog responds to update request (part 2)</td></tr>
+<tr><td width="80">100003</td><td>Bot srv cog sends damage update to srv2 cog</td></tr>
+<tr><td width="80">101000</td><td>Bot srv2 cog tells cli cog to change weapon</td></tr>
+<tr><td width="80">101010</td><td>Bot srv2 cog tells cli cog to pick up an item</td></tr>
+<tr><td width="80">101020</td><td>Bot srv2 cog tells srv cog and cli cog to fire weapon</td></tr>
+<tr><td width="80">101025</td><td>Bot srv force cog tells cli cog to play sound effect</td></tr>
+<tr><td width="80">101026</td><td>Bot srv force cog tells cli cog to stop playing sound effect</td></tr>
+<tr><td width="80">101030</td><td>Bot srv force cog tells srv2 cog that a force power was used against the bot</td></tr>
+<tr><td width="80">101040</td><td>Bot srv force cog sends mana update to srv2 cog</td></tr>
+<tr><td width="80">101050</td><td>Ask startup cog for bot with highest score (sent from srv2 to startup)</td></tr>
+<tr><td width="80">101051</td><td>Startup cog responds with high scorer</td></tr>
+<tr><td width="80">101999</td><td>Bot uses force power against player (e.g. blinding, deadly sight), sent from srv force cog to player cog</td></tr>
+<tr><td width="80">120000</td><td>Update bot target mask, sent from hotkey to srv2 cog</td></tr>
+<tr><td width="80">1852000</td><td>Cog registers for auto-discovery</td></tr>
 </table>
 <h3>Armed Mode</h3>
 <table width="100%">
@@ -183,68 +191,102 @@ Parameters: (0 - botid    1 - Thing number)
 <tr><td width="80">0x04</td><td>Allow force</td></tr>
 <tr><td width="80">0x08</td><td>Teams</td></tr>
 </table>
+<h3>Respawn Mask (startup cog)</h3>
+<table width="100%">
+<tr><td width="80">0x1</td><td>Ignore walkplayer 1</td></tr>	
+<tr><td width="80">0x2</td><td>Ignore walkplayer 2</td></tr>
+<tr><td width="80">0x4</td><td>Ignore walkplayer 3</td></tr>
+<tr><td width="80">0x8</td><td>Ignore walkplayer 4</td></tr>
+<tr><td width="80">0x10</td><td>Ignore walkplayer 5</td></tr>	
+<tr><td width="80">0x20</td><td>Ignore walkplayer 6</td></tr>
+<tr><td width="80">0x40</td><td>Ignore walkplayer 7</td></tr>
+<tr><td width="80">0x80</td><td>Ignore walkplayer 8</td></tr>
+<tr><td width="80">0x100</td><td>Ignore walkplayer 9</td></tr>	
+<tr><td width="80">0x200</td><td>Ignore walkplayer 10</td></tr>
+<tr><td width="80">0x400</td><td>Ignore walkplayer 11</td></tr>
+<tr><td width="80">0x800</td><td>Ignore walkplayer 12</td></tr>
+<tr><td width="80">0x1000</td><td>Ignore walkplayer 13</td></tr>	
+<tr><td width="80">0x2000</td><td>Ignore walkplayer 14</td></tr>
+<tr><td width="80">0x4000</td><td>Ignore walkplayer 15</td></tr>
+<tr><td width="80">0x8000</td><td>Ignore walkplayer 16</td></tr>
+<tr><td width="80">0x10000</td><td>Ignore walkplayer 17</td></tr>	
+<tr><td width="80">0x20000</td><td>Ignore walkplayer 18</td></tr>
+<tr><td width="80">0x40000</td><td>Ignore walkplayer 19</td></tr>
+<tr><td width="80">0x80000</td><td>Ignore walkplayer 20</td></tr>
+<tr><td width="80">0x100000</td><td>Ignore walkplayer 21</td></tr>	
+<tr><td width="80">0x200000</td><td>Ignore walkplayer 22</td></tr>
+<tr><td width="80">0x400000</td><td>Ignore walkplayer 23</td></tr>
+<tr><td width="80">0x800000</td><td>Ignore walkplayer 24</td></tr>
+<tr><td width="80">0x1000000</td><td>Ignore walkplayer 25</td></tr>	
+<tr><td width="80">0x2000000</td><td>Ignore walkplayer 26</td></tr>
+<tr><td width="80">0x4000000</td><td>Ignore walkplayer 27</td></tr>
+<tr><td width="80">0x8000000</td><td>Ignore walkplayer 28</td></tr>
+<tr><td width="80">0x10000000</td><td>Ignore walkplayer 29</td></tr>	
+<tr><td width="80">0x20000000</td><td>Ignore walkplayer 30</td></tr>
+<tr><td width="80">0x40000000</td><td>Ignore walkplayer 31</td></tr>
+<tr><td width="80">0x80000000</td><td>Ignore walkplayer 32</td></tr>
+</table>
+<h3>Respawn Flags (startup cog)</h3>
+<table width="100%">
+<tr><td width="80">0x1</td><td>Spawn point is disabled (temporarily set after a bot spawn)</td></tr>	
+<tr><td width="80">0x2</td><td>Spawn point cannot be used by any bot in non-team play</td></tr>
+<tr><td width="80">0x4</td><td>Spawn point cannot be used by team 1 (red)</td></tr>
+<tr><td width="80">0x8</td><td>Spawn point cannot be used by team 2 (gold)</td></tr>
+<tr><td width="80">0x10</td><td>Spawn point cannot be used by team 3 (blue)</td></tr>
+<tr><td width="80">0x20</td><td>Spawn point cannot be used by team 4 (green)</td></tr>
+</table>
 <h3>Botmode</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>seek gun 0</td></tr>
-<tr><td width="80">0x02</td><td>seek gun 1</td></tr>
-<tr><td width="80">0x04</td><td>seek gun 2</td></tr>
-<tr><td width="80">0x08</td><td>seek gun 3</td></tr>
-<tr><td width="80">0x10</td><td>seek gun 4</td></tr>
-<tr><td width="80">0x20</td><td>seek energy</td></tr>
-<tr><td width="80">0x40</td><td>seek power</td></tr>
-<tr><td width="80">0x80</td><td>seek rail dets</td></tr>
+<tr><td width="80">0x01</td><td>seek gun 0 (conc rifle)</td></tr>
+<tr><td width="80">0x02</td><td>seek gun 1 (raildet)</td></tr>
+<tr><td width="80">0x04</td><td>seek gun 2 (repeater)</td></tr>
+<tr><td width="80">0x08</td><td>seek gun 3 (st rifle)</td></tr>
+<tr><td width="80">0x10</td><td>seek gun 4 (crossbow)</td></tr>
+<tr><td width="80">0x20</td><td>seek energy cells</td></tr>
+<tr><td width="80">0x40</td><td>seek power cells</td></tr>
+<tr><td width="80">0x80</td><td>seek rail charges</td></tr>
 <tr><td width="80">0x100</td><td>seek therm dets</td></tr>
 <tr><td width="80">0x200</td><td>seek seq mines</td></tr>
 <tr><td width="80">0x400</td><td>seek health</td></tr>
 <tr><td width="80">0x800</td><td>seek shields</td></tr>
-<tr><td width="80">0x1000</td><td>run other direction</td></tr>
-<tr><td width="80">0x2000</td><td>seek target</td></tr>
-<tr><td width="80">0x4000</td><td>found target</td></tr>
+<tr><td width="80">0x1000</td><td>running backwards on current path</td></tr>
+<tr><td width="80">0x2000</td><td>seek target (not in use?)</td></tr>
+<tr><td width="80">0x4000</td><td>has target</td></tr>
 <tr><td width="80">0x8000</td><td>under attack</td></tr>
 <tr><td width="80">0x10000</td><td>alive</td></tr>
 <tr><td width="80">0x20000</td><td>attacking target</td></tr>
-<tr><td width="80">0x40000</td><td>cannot fire at target</td></tr>
-<tr><td width="80">0x80000</td><td>waiting</td></tr>
-<tr><td width="80">0x100000</td><td>slow</td></tr>
-<tr><td width="80">0x200000</td><td>saber can block</td></tr>
+<tr><td width="80">0x40000</td><td>cannot fire at target (i.e. weapon remounting)</td></tr>
+<tr><td width="80">0x80000</td><td>(not used)</td></tr>
+<tr><td width="80">0x100000</td><td>move slowly</td></tr>
+<tr><td width="80">0x200000</td><td>swinging saber (i.e. not able to block)</td></tr>
 <tr><td width="80">0x400000</td><td>force gripped</td></tr>
-<tr><td width="80">0x800000</td><td>CTF attack mode (not in use)</td></tr>
-<tr><td width="80">0x1000000</td><td>CTF defend mode (not in use)</td></tr>
-<tr><td width="80">0x2000000</td><td>CTF freelance mode (not in use)</td></tr>
+<tr><td width="80">0x800000</td><td>CTF attack characteristic (not in use)</td></tr>
+<tr><td width="80">0x1000000</td><td>CTF defend characteristic (not in use)</td></tr>
+<tr><td width="80">0x2000000</td><td>CTF freelance characteristic (not in use)</td></tr>
+<tr><td width="80">0x4000000</td><td>ignore items, move straight to next node</td></tr>
 </table>
-<h3>Path Info</h3>
+<h3>Path Requirements</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>move forward only</td></tr>
-<tr><td width="80">0x02</td><td>looping</td></tr>
-</table>
-<h3>CTF Path Info</h3>
-<table width="100%">
-<tr><td width="80">0x01</td><td>Red base forward - priority 1</td></tr>
-<tr><td width="80">0x02</td><td>Red base reverse - priority 1</td></tr>
-<tr><td width="80">0x04</td><td>Gold base forward - priority 1</td></tr>
-<tr><td width="80">0x08</td><td>Gold base reverse - priority 1</td></tr>
-<tr><td width="80">0x10</td><td>Red base forward - priority 2</td></tr>
-<tr><td width="80">0x20</td><td>Red base reverse - priority 2</td></tr>
-<tr><td width="80">0x40</td><td>Gold base forward - priority 2</td></tr>
-<tr><td width="80">0x80</td><td>Gold base reverse - priority 2</td></tr>
-<tr><td width="80">0x100</td><td>Red base forward - priority 3</td></tr>
-<tr><td width="80">0x200</td><td>Red base reverse - priority 3</td></tr>
-<tr><td width="80">0x400</td><td>Gold base forward - priority 3</td></tr>
-<tr><td width="80">0x800</td><td>Gold base reverse - priority 3</td></tr>
-<tr><td width="80">0x1000</td><td>move forward only</td></tr>
+<tr><td width="80">0x1</td><td>Requires CTF red key</td></tr>
+<tr><td width="80">0x2</td><td>Requires CTF gold key</td></tr>
 </table>
 <h3>Special Nodes</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>full stop</td></tr>
+<tr><td width="80">0x01</td><td>full stop (apparently not implemented yet)</td></tr>
 <tr><td width="80">0x02</td><td>slow</td></tr>
 <tr><td width="80">0x04</td><td>jump forward</td></tr>
 <tr><td width="80">0x08</td><td>jump backward</td></tr>
 <tr><td width="80">0x10</td><td>lay mine</td></tr>
 <tr><td width="80">0x20</td><td>activate forward</td></tr>
 <tr><td width="80">0x40</td><td>activate backward</td></tr>
-<tr><td width="80">0x80</td><td>wait forward</td></tr>
-<tr><td width="80">0x100</td><td>wait backward</td></tr>
+<tr><td width="80">0x80</td><td>(not used)</td></tr>
+<tr><td width="80">0x100</td><td>(not used)</td></tr>
 <tr><td width="80">0x200</td><td>run fast</td></tr>
+<tr><td width="80">0x400</td><td>ignore items, move straight to next node</td></tr>
+</table>
+<h3>Navigation Special Nodes</h3>
+<table width="100%">
+<tr><td width="80">0x1</td><td>Ignore node when finding nearest node for lost bot</td></tr>
 </table>
 <h3>Force powers</h3>
 <table width="100%">

@@ -124,7 +124,7 @@ Please don't send them via email as this way everyone can see what others have a
 <li>Score limit within 'Arena of Light and Dark' not working correctly
 <li>Picking up a flag in CTF games is inconsistent
 <li>Teamplay - bot will shoot a conc or raildet at an opponent too close to you
-<li>Teamplay - team mates use TD trap in Nar Shadaa against you
+<li>Teamplay - team mates use TD trap in Nar Shaddaa against you
 <li>Rbots is unstable when trying to run over a network or the internet.
 
 </ul>
@@ -133,7 +133,6 @@ Please don't send them via email as this way everyone can see what others have a
 <p>
 <ul>
 <li>JK - Blades of Death
-<li>CTF - The Challenge at Nar Shaddaa
 <li>MotS - Tree Canopy
 <li>MotS - Hutt Palace
 <li>MotS - Reactor

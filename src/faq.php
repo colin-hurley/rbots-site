@@ -107,7 +107,6 @@
 <li><a href="#q6">Why don't you make it that the bots can work in any level?</a>
 <li><a href="#q7">How can I add different skins for the bots?</a>
 <li><a href="#q8">Where can I get more Rbots levels?</a>
-<li><a href="#q9">How can I use Rbots without being online?</a>
 </ol>
 
 <a name="q1"></a><h3>When are you going to add 'your suggestion' to Rbots?</h3>
