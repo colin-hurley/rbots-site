@@ -120,22 +120,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td width="80">1001</td><td>Used by CTF</td></tr>
 <tr><td width="80">1002</td><td>Used by CTF</td></tr>
 <tr><td width="80">1003</td><td>Used by CTF</td></tr>
-</table>
-<p>
-Effects sent from bot server cog to local bot client cog
-Parameters: (0 - botid    1 - Thing number) 
-</p>
-<table width="100%">
-<tr><td width="80">2000</td><td>Respawn effects</td></tr>
-<tr><td width="80">2001</td><td>Play saber mount sounds</td></tr>
-<tr><td width="80">2002</td><td>Play dismount saber sounds</td></tr>
-<tr><td width="80">2003</td><td>Play gun mount sound (param(2) - gun type = 0,1,2)</td></tr>
-<tr><td width="80">2004</td><td>Create smoke effects at bot position - used for deadly sight</td></tr>
-<tr><td width="80">2100</td><td>Play saber block animation</td></tr>
-<tr><td width="80">2101</td><td>Stop saber block animation</td></tr>
-</table>
-<br>
-<table width="100%">
 <tr><td width="80">10000</td><td>Bot requests new position from nav cog</td></tr>
 <tr><td width="80">10001</td><td>Used by CTF</td></tr>
 <tr><td width="80">11000</td><td>New position info sent from nav cog to bot</td></tr>
@@ -162,15 +146,18 @@ Parameters: (0 - botid    1 - Thing number)
 <tr><td width="80">100001</td><td>Bot srv2 cog responds to update request (part 1)</td></tr>
 <tr><td width="80">100002</td><td>Bot srv2 cog responds to update request (part 2)</td></tr>
 <tr><td width="80">100003</td><td>Bot srv cog sends damage update to srv2 cog</td></tr>
-<tr><td width="80">101000</td><td>Bot srv2 cog tells cli cog to change weapon</td></tr>
-<tr><td width="80">101010</td><td>Bot srv2 cog tells cli cog to pick up an item</td></tr>
-<tr><td width="80">101020</td><td>Bot srv2 cog tells srv cog and cli cog to fire weapon</td></tr>
-<tr><td width="80">101025</td><td>Bot srv force cog tells cli cog to play sound effect</td></tr>
-<tr><td width="80">101026</td><td>Bot srv force cog tells cli cog to stop playing sound effect</td></tr>
+<tr><td width="80">101000</td><td>Bot srv2 cog tells srv cog to change weapon</td></tr>
+<tr><td width="80">101010</td><td>Bot srv2 cog tells srv cog to pick up an item</td></tr>
+<tr><td width="80">101020</td><td>Bot srv2 cog tells srv cog to fire weapon</td></tr>
+<tr><td width="80">101025</td><td>Bot srv force cog tells cli cog to play sound effect (not fully implemented)</td></tr>
+<tr><td width="80">101026</td><td>Bot srv force cog tells cli cog to stop playing sound effect (not fully implemented)</td></tr>
 <tr><td width="80">101030</td><td>Bot srv force cog tells srv2 cog that a force power was used against the bot</td></tr>
 <tr><td width="80">101040</td><td>Bot srv force cog sends mana update to srv2 cog</td></tr>
 <tr><td width="80">101050</td><td>Ask startup cog for bot with highest score (sent from srv2 to startup)</td></tr>
 <tr><td width="80">101051</td><td>Startup cog responds with high scorer</td></tr>
+<tr><td width="80">101060</td><td>Bot srv cog tells skin cog to create a new bot thing</td></tr>
+<tr><td width="80">101061</td><td>Skin cog responds with created bot thing number</td></tr>
+<tr><td width="80">101062</td><td>Bot srv cog tells skin cog to change bot's weapon mesh</td></tr>
 <tr><td width="80">101999</td><td>Bot uses force power against player (e.g. blinding, deadly sight), sent from srv force cog to player cog</td></tr>
 <tr><td width="80">120000</td><td>Update bot target mask, sent from hotkey to srv2 cog</td></tr>
 <tr><td width="80">1852000</td><td>Cog registers for auto-discovery</td></tr>
@@ -306,25 +293,6 @@ Parameters: (0 - botid    1 - Thing number)
 <tr><td width="80">0x2000</td><td>deadly sight</td></tr>
 <tr><td width="80">0x4000</td><td>lightside surge</td></tr>
 <tr><td width="80">0x8000</td><td>darkside surge</td></tr>
-</table>
-<h3>Characteristics</h3>
-<table width="100%">
-<tr><td width="80">0x01</td><td>Attack</td></tr>
-<tr><td width="80">0x02</td><td>Defend</td></tr>
-<tr><td width="80">0x04</td><td>Freelance</td></tr>
-<tr><td width="80">0x08</td><td>unused</td></tr>
-<tr><td width="80">0x10</td><td>unused</td></tr>
-<tr><td width="80">0x20</td><td>unused</td></tr>
-<tr><td width="80">0x40</td><td>unused</td></tr>
-<tr><td width="80">0x80</td><td>unused</td></tr>
-<tr><td width="80">0x100</td><td>unused</td></tr>
-<tr><td width="80">0x200</td><td>unused</td></tr>
-<tr><td width="80">0x400</td><td>unused</td></tr>
-<tr><td width="80">0x800</td><td>unused</td></tr>
-<tr><td width="80">0x1000</td><td>unused</td></tr>
-<tr><td width="80">0x2000</td><td>unused</td></tr>
-<tr><td width="80">0x4000</td><td>unused</td></tr>
-<tr><td width="80">0x8000</td><td>unused</td></tr>
 </table>
 
       <!-- end body -->
