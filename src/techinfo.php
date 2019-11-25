@@ -104,61 +104,61 @@ This document is intended for use as an aide for those who wish to study the int
 </p>
 <p>
 <h3>Triggers</h3>
-<table width="100%">
-<tr><td width="80">800</td><td>Game options - sent from startup cog to bot</td></tr>
-<tr><td width="80">900</td><td>Respawn bot - sent from startup cog to bot</td></tr>
-<tr><td width="80">901</td><td>Kill & remove bot - sent from startup cog to bot</td></tr>
-<tr><td width="80">910</td><td>Add bot - sent from hotkey to startup cog</td></tr>
-<tr><td width="80">920</td><td>Remove bot - sent from hotkey to startup cog</td></tr>
-<tr><td width="80">930</td><td>Set Difficulty level - sent from hotkey to all bots</td></tr>
-<tr><td width="80">940</td><td>Cycle number of bots - sent from hotkey to startup cog</td></tr>
-<tr><td width="80">950</td><td>Bot has respawned, sent from srv</td></tr>
-<tr><td width="80">960</td><td>Query thing number - sent to srv</td></tr>
-<tr><td width="80">970</td><td>Return thing number - sent from srv</td></tr>
-<tr><td width="80">990</td><td>Player killed by bot - sent from player cog to startup cog</td></tr>
-<tr><td width="80">1000</td><td>Bot has died, sent from srv</td></tr>
-<tr><td width="80">1001</td><td>Used by CTF</td></tr>
-<tr><td width="80">1002</td><td>Used by CTF</td></tr>
-<tr><td width="80">1003</td><td>Used by CTF</td></tr>
-<tr><td width="80">10000</td><td>Bot requests new position from nav cog</td></tr>
-<tr><td width="80">10001</td><td>Used by CTF</td></tr>
-<tr><td width="80">11000</td><td>New position info sent from nav cog to bot</td></tr>
-<tr><td width="80">11010</td><td>Bot arrived at node, sent from srv</td></tr>
-<tr><td width="80">11020</td><td>Special info sent from special cog to bot</td></tr>
-<tr><td width="80">11030</td><td>Activate message sent to other cogs</td></tr>
-<tr><td width="80">11040</td><td>Wait for arrival message sent from other cogs to bot</td></tr>
-<tr><td width="80">11050</td><td>Arrival message sent from other cogs to bot</td></tr>
-<tr><td width="80">11060</td><td>Request for special nav info sent from nav cog</td></tr>
-<tr><td width="80">11070</td><td>Response for special nav info sent to nav cog</td></tr>
-<tr><td width="80">12000</td><td>Backpack taken by bot</td></tr>
-<tr><td width="80">12001</td><td>Backpack info sent to bot (part 1)</td></tr>
-<tr><td width="80">12002</td><td>Backpack info sent to bot (part 2)</td></tr>
-<tr><td width="80">12003</td><td>Backpack info sent to bot (part 3)</td></tr>
-<tr><td width="80">12004</td><td>Backpack info sent to bot (part 4)</td></tr>
-<tr><td width="80">12010</td><td>Backpack info sent from bot or player (part 1)</td></tr>
-<tr><td width="80">12011</td><td>Backpack info sent from bot or player (part 2)</td></tr>
-<tr><td width="80">12012</td><td>Backpack info sent from bot or player (part 3)</td></tr>
-<tr><td width="80">12013</td><td>Backpack info sent from bot or player (part 4)</td></tr>
-<tr><td width="80">12200</td><td>Bot touched CTF flag</td></tr>
-<tr><td width="80">12210</td><td>Update CTF info</td></tr>
-<tr><td width="80">15080</td><td>Update selected bot (used by hotkeys)</td></tr>
-<tr><td width="80">100000</td><td>Bot srv cog requests update from srv2 cog</td></tr>
-<tr><td width="80">100001</td><td>Bot srv2 cog responds to update request (part 1)</td></tr>
-<tr><td width="80">100002</td><td>Bot srv2 cog responds to update request (part 2)</td></tr>
-<tr><td width="80">100003</td><td>Bot srv cog sends damage update to srv2 cog</td></tr>
-<tr><td width="80">101000</td><td>Bot srv2 cog tells srv cog to change weapon</td></tr>
-<tr><td width="80">101010</td><td>Bot srv2 cog tells srv cog to pick up an item</td></tr>
-<tr><td width="80">101020</td><td>Bot srv2 cog tells srv cog to fire weapon</td></tr>
-<tr><td width="80">101030</td><td>Bot srv force cog tells srv2 cog that force pull was used against the bot</td></tr>
-<tr><td width="80">101040</td><td>Bot srv force cog sends mana update to srv2 cog</td></tr>
-<tr><td width="80">101050</td><td>Ask startup cog for bot with highest score (sent from srv2 to startup)</td></tr>
-<tr><td width="80">101051</td><td>Startup cog responds with high scorer</td></tr>
-<tr><td width="80">101060</td><td>Bot srv cog tells skin cog to create a new bot thing</td></tr>
-<tr><td width="80">101061</td><td>Skin cog responds with created bot thing number</td></tr>
-<tr><td width="80">101062</td><td>Bot srv cog tells skin cog to change bot's weapon mesh</td></tr>
-<tr><td width="80">101999</td><td>Force power against bot or player (e.g. blinding, deadly sight), sent from player force cog or bot srv force cog to player class cog or other bot's srv force cog</td></tr>
-<tr><td width="80">120000</td><td>Update bot target mask, sent from hotkey to srv2 cog</td></tr>
-<tr><td width="80">1852000</td><td>Cog registers for auto-discovery</td></tr>
+<table>
+<tr><th width="80" align="left">Trigger</th><th width="350" align="left">Description</th><th align="left">Sender/Receiver</th></tr>
+<tr><td>800</td><td>Game options</td><td>Broadcast from startup</td></tr>
+<tr><td>900</td><td>Respawn bot</td><td>Sent from startup to srv</td></tr>
+<tr><td>901</td><td>Kill bot and remove from game</td><td>Sent from startup to srv</td></tr>
+<tr><td>910</td><td>Add bot</td><td>Sent from hotkey to startup</td></tr>
+<tr><td>920</td><td>Remove bot</td><td>Sent from hotkey to startup</td></tr>
+<tr><td>930</td><td>Set Difficulty level</td><td>Sent from hotkey to startup</td></tr>
+<tr><td>950</td><td>Bot respawned</td><td>Broadcast from srv</td></tr>
+<tr><td>960</td><td>Query thing number</td><td>Sent to srv</td></tr>
+<tr><td>970</td><td>Return thing number</td><td>Sent from srv</td></tr>
+<tr><td>990</td><td>Player killed by bot</td><td>Sent from player to startup</td></tr>
+<tr><td>1000</td><td>Bot killed</td><td>Broadcast from srv</td></tr>
+<tr><td>1001</td><td>Used by CTF</td><td>CTF</td></tr>
+<tr><td>1002</td><td>Used by CTF</td><td>CTF</td></tr>
+<tr><td>1003</td><td>Used by CTF</td><td>CTF</td></tr>
+<tr><td>10000</td><td>Bot requests new position</td><td>Sent from srv to nav</td></tr>
+<tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
+<tr><td>11000</td><td>New position response</td><td>Sent from nav to bot</td></tr>
+<tr><td>11010</td><td>Bot arrived at node</td><td>Broadcast from srv</td></tr>
+<tr><td>11020</td><td>Special info</td><td>Sent to srv/srv2</td></tr>
+<tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
+<tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
+<tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
+<tr><td>11060</td><td>Request for special nav info</td><td>Broadcast from nav</td></tr>
+<tr><td>11070</td><td>Response for special nav info</td><td>Sent to nav</td></tr>
+<tr><td>12000</td><td>Request backpack info</td><td>Sent from srv2 to backpack</td></tr>
+<tr><td>12001</td><td>Backpack info response (part 1)</td><td>Sent from backpack to srv2</td></tr>
+<tr><td>12002</td><td>Backpack info response (part 2)</td><td>Sent from backpack to srv2</td></tr>
+<tr><td>12003</td><td>Backpack info response (part 3)</td><td>Sent from backpack to srv2</td></tr>
+<tr><td>12004</td><td>Backpack info response (part 4)</td><td>Sent from backpack to srv2</td></tr>
+<tr><td>12010</td><td>Set backpack info (part 1)</td><td>Sent from srv2 or player to backpack</td></tr>
+<tr><td>12011</td><td>Set backpack info (part 2)</td><td>Sent from srv2 or player to backpack</td></tr>
+<tr><td>12012</td><td>Set backpack info (part 3)</td><td>Sent from srv2 or player to backpack</td></tr>
+<tr><td>12013</td><td>Set backpack info (part 4)</td><td>Sent from srv2 or player to backpack</td></tr>
+<tr><td>12200</td><td>Bot touched CTF flag</td><td>Sent from srv2 to CTF</td></tr>
+<tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
+<tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
+<tr><td>100000</td><td>Request bot info update</td><td>Sent from srv to srv2</td></tr>
+<tr><td>100001</td><td>Bot info update response (part 1)</td><td>Sent from srv2 to srv</td></tr>
+<tr><td>100002</td><td>Bot info update response (part 2)</td><td>Sent from srv2 to srv</td></tr>
+<tr><td>100003</td><td>Bot damage update</td><td>Sent from srv to srv2</td></tr>
+<tr><td>101000</td><td>Bot changed its weapon</td><td>Sent from srv2 to srv</td></tr>
+<tr><td>101010</td><td>Bot picked up an item</td><td>Sent from srv2 to srv</td></tr>
+<tr><td>101020</td><td>Bot weapon was fired</td><td>Sent from srv2 to srv</td></tr>
+<tr><td>101030</td><td>Bot weapon was force-pulled</td><td>Sent from srv-force to srv2</td></tr>
+<tr><td>101040</td><td>Bot picked up mana or force surge powerup</td><td>Sent from srv2 to srv-force</td></tr>
+<tr><td>101050</td><td>Request bot with highest score</td><td>Sent to startup</td></tr>
+<tr><td>101051</td><td>High scorer response</td><td>Sent from startup</td></tr>
+<tr><td>101060</td><td>Create new bot thing</td><td>Sent from srv to skin</td></tr>
+<tr><td>101061</td><td>Created bot response</td><td>Sent from skin to srv</td></tr>
+<tr><td>101062</td><td>Change bot weapon mesh</td><td>Sent from srv to skin</td></tr>
+<tr><td>101999</td><td>Force power used against bot or player (i.e. the 'skill' trigger)</td><td>Sent from player's force cog or srv-force to player or srv-force</td></tr>
+<tr><td>120000</td><td>Update bot target mask</td><td>Sent from hotkey to srv2</td></tr>
+<tr><td>1852000</td><td>Cog registers for auto-discovery</td><td>Broadcast from any discoverable cog type</td></tr>
 </table>
 <h3>Armed Mode</h3>
 <table width="100%">
