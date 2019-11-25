@@ -112,11 +112,11 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td width="80">920</td><td>Remove bot - sent from hotkey to startup cog</td></tr>
 <tr><td width="80">930</td><td>Set Difficulty level - sent from hotkey to all bots</td></tr>
 <tr><td width="80">940</td><td>Cycle number of bots - sent from hotkey to startup cog</td></tr>
-<tr><td width="80">950</td><td>Bot has respawned</td></tr>
-<tr><td width="80">960</td><td>Query thing number - sent to bot</td></tr>
-<tr><td width="80">970</td><td>Return thing number - sent from bot</td></tr>
+<tr><td width="80">950</td><td>Bot has respawned, sent from srv</td></tr>
+<tr><td width="80">960</td><td>Query thing number - sent to srv</td></tr>
+<tr><td width="80">970</td><td>Return thing number - sent from srv</td></tr>
 <tr><td width="80">990</td><td>Player killed by bot - sent from player cog to startup cog</td></tr>
-<tr><td width="80">1000</td><td>Bot died</td></tr>
+<tr><td width="80">1000</td><td>Bot has died, sent from srv</td></tr>
 <tr><td width="80">1001</td><td>Used by CTF</td></tr>
 <tr><td width="80">1002</td><td>Used by CTF</td></tr>
 <tr><td width="80">1003</td><td>Used by CTF</td></tr>
@@ -149,16 +149,14 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td width="80">101000</td><td>Bot srv2 cog tells srv cog to change weapon</td></tr>
 <tr><td width="80">101010</td><td>Bot srv2 cog tells srv cog to pick up an item</td></tr>
 <tr><td width="80">101020</td><td>Bot srv2 cog tells srv cog to fire weapon</td></tr>
-<tr><td width="80">101025</td><td>Bot srv force cog tells cli cog to play sound effect (not fully implemented)</td></tr>
-<tr><td width="80">101026</td><td>Bot srv force cog tells cli cog to stop playing sound effect (not fully implemented)</td></tr>
-<tr><td width="80">101030</td><td>Bot srv force cog tells srv2 cog that a force power was used against the bot</td></tr>
+<tr><td width="80">101030</td><td>Bot srv force cog tells srv2 cog that force pull was used against the bot</td></tr>
 <tr><td width="80">101040</td><td>Bot srv force cog sends mana update to srv2 cog</td></tr>
 <tr><td width="80">101050</td><td>Ask startup cog for bot with highest score (sent from srv2 to startup)</td></tr>
 <tr><td width="80">101051</td><td>Startup cog responds with high scorer</td></tr>
 <tr><td width="80">101060</td><td>Bot srv cog tells skin cog to create a new bot thing</td></tr>
 <tr><td width="80">101061</td><td>Skin cog responds with created bot thing number</td></tr>
 <tr><td width="80">101062</td><td>Bot srv cog tells skin cog to change bot's weapon mesh</td></tr>
-<tr><td width="80">101999</td><td>Bot uses force power against player (e.g. blinding, deadly sight), sent from srv force cog to player cog</td></tr>
+<tr><td width="80">101999</td><td>Force power against bot or player (e.g. blinding, deadly sight), sent from player force cog or bot srv force cog to player class cog or other bot's srv force cog</td></tr>
 <tr><td width="80">120000</td><td>Update bot target mask, sent from hotkey to srv2 cog</td></tr>
 <tr><td width="80">1852000</td><td>Cog registers for auto-discovery</td></tr>
 </table>
@@ -173,42 +171,42 @@ This document is intended for use as an aide for those who wish to study the int
 </table>
 <h3>Gamemode</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>Allow guns</td></tr>	
-<tr><td width="80">0x02</td><td>Allow sabers</td></tr>
-<tr><td width="80">0x04</td><td>Allow force</td></tr>
-<tr><td width="80">0x08</td><td>Teams</td></tr>
+<tr><td width="80">0x1</td><td>Allow guns</td></tr>	
+<tr><td width="80">0x2</td><td>Allow sabers</td></tr>
+<tr><td width="80">0x4</td><td>Allow force</td></tr>
+<tr><td width="80">0x8</td><td>Teams</td></tr>
 </table>
 <h3>Respawn Mask (startup cog)</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Ignore walkplayer 1</td></tr>	
+<tr><td width="80">0x1</td><td>Ignore walkplayer 1</td></tr>
 <tr><td width="80">0x2</td><td>Ignore walkplayer 2</td></tr>
 <tr><td width="80">0x4</td><td>Ignore walkplayer 3</td></tr>
 <tr><td width="80">0x8</td><td>Ignore walkplayer 4</td></tr>
-<tr><td width="80">0x10</td><td>Ignore walkplayer 5</td></tr>	
+<tr><td width="80">0x10</td><td>Ignore walkplayer 5</td></tr>
 <tr><td width="80">0x20</td><td>Ignore walkplayer 6</td></tr>
 <tr><td width="80">0x40</td><td>Ignore walkplayer 7</td></tr>
 <tr><td width="80">0x80</td><td>Ignore walkplayer 8</td></tr>
-<tr><td width="80">0x100</td><td>Ignore walkplayer 9</td></tr>	
+<tr><td width="80">0x100</td><td>Ignore walkplayer 9</td></tr>
 <tr><td width="80">0x200</td><td>Ignore walkplayer 10</td></tr>
 <tr><td width="80">0x400</td><td>Ignore walkplayer 11</td></tr>
 <tr><td width="80">0x800</td><td>Ignore walkplayer 12</td></tr>
-<tr><td width="80">0x1000</td><td>Ignore walkplayer 13</td></tr>	
+<tr><td width="80">0x1000</td><td>Ignore walkplayer 13</td></tr>
 <tr><td width="80">0x2000</td><td>Ignore walkplayer 14</td></tr>
 <tr><td width="80">0x4000</td><td>Ignore walkplayer 15</td></tr>
 <tr><td width="80">0x8000</td><td>Ignore walkplayer 16</td></tr>
-<tr><td width="80">0x10000</td><td>Ignore walkplayer 17</td></tr>	
+<tr><td width="80">0x10000</td><td>Ignore walkplayer 17</td></tr>
 <tr><td width="80">0x20000</td><td>Ignore walkplayer 18</td></tr>
 <tr><td width="80">0x40000</td><td>Ignore walkplayer 19</td></tr>
 <tr><td width="80">0x80000</td><td>Ignore walkplayer 20</td></tr>
-<tr><td width="80">0x100000</td><td>Ignore walkplayer 21</td></tr>	
+<tr><td width="80">0x100000</td><td>Ignore walkplayer 21</td></tr>
 <tr><td width="80">0x200000</td><td>Ignore walkplayer 22</td></tr>
 <tr><td width="80">0x400000</td><td>Ignore walkplayer 23</td></tr>
 <tr><td width="80">0x800000</td><td>Ignore walkplayer 24</td></tr>
-<tr><td width="80">0x1000000</td><td>Ignore walkplayer 25</td></tr>	
+<tr><td width="80">0x1000000</td><td>Ignore walkplayer 25</td></tr>
 <tr><td width="80">0x2000000</td><td>Ignore walkplayer 26</td></tr>
 <tr><td width="80">0x4000000</td><td>Ignore walkplayer 27</td></tr>
 <tr><td width="80">0x8000000</td><td>Ignore walkplayer 28</td></tr>
-<tr><td width="80">0x10000000</td><td>Ignore walkplayer 29</td></tr>	
+<tr><td width="80">0x10000000</td><td>Ignore walkplayer 29</td></tr>
 <tr><td width="80">0x20000000</td><td>Ignore walkplayer 30</td></tr>
 <tr><td width="80">0x40000000</td><td>Ignore walkplayer 31</td></tr>
 <tr><td width="80">0x80000000</td><td>Ignore walkplayer 32</td></tr>
@@ -224,10 +222,10 @@ This document is intended for use as an aide for those who wish to study the int
 </table>
 <h3>Botmode</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>seek gun 0 (conc rifle)</td></tr>
-<tr><td width="80">0x02</td><td>seek gun 1 (raildet)</td></tr>
-<tr><td width="80">0x04</td><td>seek gun 2 (repeater)</td></tr>
-<tr><td width="80">0x08</td><td>seek gun 3 (st rifle)</td></tr>
+<tr><td width="80">0x1</td><td>seek gun 0 (conc rifle)</td></tr>
+<tr><td width="80">0x2</td><td>seek gun 1 (raildet)</td></tr>
+<tr><td width="80">0x4</td><td>seek gun 2 (repeater)</td></tr>
+<tr><td width="80">0x8</td><td>seek gun 3 (st rifle)</td></tr>
 <tr><td width="80">0x10</td><td>seek gun 4 (crossbow)</td></tr>
 <tr><td width="80">0x20</td><td>seek energy cells</td></tr>
 <tr><td width="80">0x40</td><td>seek power cells</td></tr>
@@ -246,10 +244,10 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td width="80">0x80000</td><td>(not used)</td></tr>
 <tr><td width="80">0x100000</td><td>move slowly</td></tr>
 <tr><td width="80">0x200000</td><td>swinging saber (i.e. not able to block)</td></tr>
-<tr><td width="80">0x400000</td><td>force gripped</td></tr>
-<tr><td width="80">0x800000</td><td>CTF attack characteristic (not in use)</td></tr>
-<tr><td width="80">0x1000000</td><td>CTF defend characteristic (not in use)</td></tr>
-<tr><td width="80">0x2000000</td><td>CTF freelance characteristic (not in use)</td></tr>
+<tr><td width="80">0x400000</td><td>(not used)</td></tr>
+<tr><td width="80">0x800000</td><td>(not used)</td></tr>
+<tr><td width="80">0x1000000</td><td>(not used)</td></tr>
+<tr><td width="80">0x2000000</td><td>(not used)</td></tr>
 <tr><td width="80">0x4000000</td><td>ignore items, move straight to next node</td></tr>
 </table>
 <h3>Path Requirements</h3>
@@ -259,10 +257,10 @@ This document is intended for use as an aide for those who wish to study the int
 </table>
 <h3>Special Nodes</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>full stop (apparently not implemented yet)</td></tr>
-<tr><td width="80">0x02</td><td>slow</td></tr>
-<tr><td width="80">0x04</td><td>jump forward</td></tr>
-<tr><td width="80">0x08</td><td>jump backward</td></tr>
+<tr><td width="80">0x1</td><td>full stop (apparently not implemented yet)</td></tr>
+<tr><td width="80">0x2</td><td>slow</td></tr>
+<tr><td width="80">0x4</td><td>jump forward</td></tr>
+<tr><td width="80">0x8</td><td>jump backward</td></tr>
 <tr><td width="80">0x10</td><td>lay mine</td></tr>
 <tr><td width="80">0x20</td><td>activate forward</td></tr>
 <tr><td width="80">0x40</td><td>activate backward</td></tr>
@@ -277,10 +275,10 @@ This document is intended for use as an aide for those who wish to study the int
 </table>
 <h3>Force powers</h3>
 <table width="100%">
-<tr><td width="80">0x01</td><td>speed</td></tr>
-<tr><td width="80">0x02</td><td>jump</td></tr>
-<tr><td width="80">0x04</td><td>pull</td></tr>
-<tr><td width="80">0x08</td><td>seeing</td></tr>
+<tr><td width="80">0x1</td><td>speed</td></tr>
+<tr><td width="80">0x2</td><td>jump</td></tr>
+<tr><td width="80">0x4</td><td>pull</td></tr>
+<tr><td width="80">0x8</td><td>seeing</td></tr>
 <tr><td width="80">0x10</td><td>healing</td></tr>
 <tr><td width="80">0x20</td><td>persuasion</td></tr>
 <tr><td width="80">0x40</td><td>blinding</td></tr>

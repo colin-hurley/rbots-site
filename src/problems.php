@@ -119,7 +119,6 @@ Please don't send them via email as this way everyone can see what others have a
 <li>The botcam takes too long to switch back to the player
 <li>Create built-in Glowsabers for the players to use
 <li>Attempts to walk through force fields
-<li>No sound from Concussion rifle secondary fire
 <li>The game will not end when a bot reaches the score limit, only when a human player reaches it
 <li>Score limit within 'Arena of Light and Dark' not working correctly
 <li>Picking up a flag in CTF games is inconsistent
