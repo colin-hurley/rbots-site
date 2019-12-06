@@ -162,135 +162,144 @@ This document is intended for use as an aide for those who wish to study the int
 </table>
 <h3>Armed Mode</h3>
 <table width="100%">
-<tr><td width="80">0</td><td>unarmed</td></tr>
-<tr><td width="80">1</td><td>armed</td></tr>
-<tr><td width="80">2</td><td>saber</td></tr>
-<tr><td width="80">3</td><td>unarmed in water</td></tr>
-<tr><td width="80">4</td><td>armed in water</td></tr>
-<tr><td width="80">5</td><td>saber in water</td></tr>
+<tr><th width="80" align="left">Mode</th><th align="left">Description</th></tr>
+<tr><td>0</td><td>unarmed</td></tr>
+<tr><td>1</td><td>armed</td></tr>
+<tr><td>2</td><td>saber</td></tr>
+<tr><td>3</td><td>unarmed in water</td></tr>
+<tr><td>4</td><td>armed in water</td></tr>
+<tr><td>5</td><td>saber in water</td></tr>
 </table>
 <h3>Gamemode</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Allow guns</td></tr>	
-<tr><td width="80">0x2</td><td>Allow sabers</td></tr>
-<tr><td width="80">0x4</td><td>Allow force</td></tr>
-<tr><td width="80">0x8</td><td>Teams</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Allow guns</td></tr>	
+<tr><td>0x2</td><td>Allow sabers</td></tr>
+<tr><td>0x4</td><td>Allow force</td></tr>
+<tr><td>0x8</td><td>Teams</td></tr>
 </table>
 <h3>Respawn Mask (startup cog)</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Ignore walkplayer 1</td></tr>
-<tr><td width="80">0x2</td><td>Ignore walkplayer 2</td></tr>
-<tr><td width="80">0x4</td><td>Ignore walkplayer 3</td></tr>
-<tr><td width="80">0x8</td><td>Ignore walkplayer 4</td></tr>
-<tr><td width="80">0x10</td><td>Ignore walkplayer 5</td></tr>
-<tr><td width="80">0x20</td><td>Ignore walkplayer 6</td></tr>
-<tr><td width="80">0x40</td><td>Ignore walkplayer 7</td></tr>
-<tr><td width="80">0x80</td><td>Ignore walkplayer 8</td></tr>
-<tr><td width="80">0x100</td><td>Ignore walkplayer 9</td></tr>
-<tr><td width="80">0x200</td><td>Ignore walkplayer 10</td></tr>
-<tr><td width="80">0x400</td><td>Ignore walkplayer 11</td></tr>
-<tr><td width="80">0x800</td><td>Ignore walkplayer 12</td></tr>
-<tr><td width="80">0x1000</td><td>Ignore walkplayer 13</td></tr>
-<tr><td width="80">0x2000</td><td>Ignore walkplayer 14</td></tr>
-<tr><td width="80">0x4000</td><td>Ignore walkplayer 15</td></tr>
-<tr><td width="80">0x8000</td><td>Ignore walkplayer 16</td></tr>
-<tr><td width="80">0x10000</td><td>Ignore walkplayer 17</td></tr>
-<tr><td width="80">0x20000</td><td>Ignore walkplayer 18</td></tr>
-<tr><td width="80">0x40000</td><td>Ignore walkplayer 19</td></tr>
-<tr><td width="80">0x80000</td><td>Ignore walkplayer 20</td></tr>
-<tr><td width="80">0x100000</td><td>Ignore walkplayer 21</td></tr>
-<tr><td width="80">0x200000</td><td>Ignore walkplayer 22</td></tr>
-<tr><td width="80">0x400000</td><td>Ignore walkplayer 23</td></tr>
-<tr><td width="80">0x800000</td><td>Ignore walkplayer 24</td></tr>
-<tr><td width="80">0x1000000</td><td>Ignore walkplayer 25</td></tr>
-<tr><td width="80">0x2000000</td><td>Ignore walkplayer 26</td></tr>
-<tr><td width="80">0x4000000</td><td>Ignore walkplayer 27</td></tr>
-<tr><td width="80">0x8000000</td><td>Ignore walkplayer 28</td></tr>
-<tr><td width="80">0x10000000</td><td>Ignore walkplayer 29</td></tr>
-<tr><td width="80">0x20000000</td><td>Ignore walkplayer 30</td></tr>
-<tr><td width="80">0x40000000</td><td>Ignore walkplayer 31</td></tr>
-<tr><td width="80">0x80000000</td><td>Ignore walkplayer 32</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Ignore walkplayer 1</td></tr>
+<tr><td>0x2</td><td>Ignore walkplayer 2</td></tr>
+<tr><td>0x4</td><td>Ignore walkplayer 3</td></tr>
+<tr><td>0x8</td><td>Ignore walkplayer 4</td></tr>
+<tr><td>0x10</td><td>Ignore walkplayer 5</td></tr>
+<tr><td>0x20</td><td>Ignore walkplayer 6</td></tr>
+<tr><td>0x40</td><td>Ignore walkplayer 7</td></tr>
+<tr><td>0x80</td><td>Ignore walkplayer 8</td></tr>
+<tr><td>0x100</td><td>Ignore walkplayer 9</td></tr>
+<tr><td>0x200</td><td>Ignore walkplayer 10</td></tr>
+<tr><td>0x400</td><td>Ignore walkplayer 11</td></tr>
+<tr><td>0x800</td><td>Ignore walkplayer 12</td></tr>
+<tr><td>0x1000</td><td>Ignore walkplayer 13</td></tr>
+<tr><td>0x2000</td><td>Ignore walkplayer 14</td></tr>
+<tr><td>0x4000</td><td>Ignore walkplayer 15</td></tr>
+<tr><td>0x8000</td><td>Ignore walkplayer 16</td></tr>
+<tr><td>0x10000</td><td>Ignore walkplayer 17</td></tr>
+<tr><td>0x20000</td><td>Ignore walkplayer 18</td></tr>
+<tr><td>0x40000</td><td>Ignore walkplayer 19</td></tr>
+<tr><td>0x80000</td><td>Ignore walkplayer 20</td></tr>
+<tr><td>0x100000</td><td>Ignore walkplayer 21</td></tr>
+<tr><td>0x200000</td><td>Ignore walkplayer 22</td></tr>
+<tr><td>0x400000</td><td>Ignore walkplayer 23</td></tr>
+<tr><td>0x800000</td><td>Ignore walkplayer 24</td></tr>
+<tr><td>0x1000000</td><td>Ignore walkplayer 25</td></tr>
+<tr><td>0x2000000</td><td>Ignore walkplayer 26</td></tr>
+<tr><td>0x4000000</td><td>Ignore walkplayer 27</td></tr>
+<tr><td>0x8000000</td><td>Ignore walkplayer 28</td></tr>
+<tr><td>0x10000000</td><td>Ignore walkplayer 29</td></tr>
+<tr><td>0x20000000</td><td>Ignore walkplayer 30</td></tr>
+<tr><td>0x40000000</td><td>Ignore walkplayer 31</td></tr>
+<tr><td>0x80000000</td><td>Ignore walkplayer 32</td></tr>
 </table>
 <h3>Respawn Flags (startup cog)</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Spawn point is disabled (temporarily set after a bot spawn)</td></tr>	
-<tr><td width="80">0x2</td><td>Spawn point cannot be used by any bot in non-team play</td></tr>
-<tr><td width="80">0x4</td><td>Spawn point cannot be used by team 1 (red)</td></tr>
-<tr><td width="80">0x8</td><td>Spawn point cannot be used by team 2 (gold)</td></tr>
-<tr><td width="80">0x10</td><td>Spawn point cannot be used by team 3 (blue)</td></tr>
-<tr><td width="80">0x20</td><td>Spawn point cannot be used by team 4 (green)</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Spawn point is disabled (temporarily set after a bot spawn)</td></tr>	
+<tr><td>0x2</td><td>Spawn point cannot be used by any bot in non-team play</td></tr>
+<tr><td>0x4</td><td>Spawn point cannot be used by team 1 (red)</td></tr>
+<tr><td>0x8</td><td>Spawn point cannot be used by team 2 (gold)</td></tr>
+<tr><td>0x10</td><td>Spawn point cannot be used by team 3 (blue)</td></tr>
+<tr><td>0x20</td><td>Spawn point cannot be used by team 4 (green)</td></tr>
 </table>
 <h3>Botmode</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>seek gun 0 (conc rifle)</td></tr>
-<tr><td width="80">0x2</td><td>seek gun 1 (raildet)</td></tr>
-<tr><td width="80">0x4</td><td>seek gun 2 (repeater)</td></tr>
-<tr><td width="80">0x8</td><td>seek gun 3 (st rifle)</td></tr>
-<tr><td width="80">0x10</td><td>seek gun 4 (crossbow)</td></tr>
-<tr><td width="80">0x20</td><td>seek energy cells</td></tr>
-<tr><td width="80">0x40</td><td>seek power cells</td></tr>
-<tr><td width="80">0x80</td><td>seek rail charges</td></tr>
-<tr><td width="80">0x100</td><td>seek therm dets</td></tr>
-<tr><td width="80">0x200</td><td>seek seq mines</td></tr>
-<tr><td width="80">0x400</td><td>seek health</td></tr>
-<tr><td width="80">0x800</td><td>seek shields</td></tr>
-<tr><td width="80">0x1000</td><td>running backwards on current path</td></tr>
-<tr><td width="80">0x2000</td><td>seek target (not in use?)</td></tr>
-<tr><td width="80">0x4000</td><td>has target</td></tr>
-<tr><td width="80">0x8000</td><td>under attack</td></tr>
-<tr><td width="80">0x10000</td><td>alive</td></tr>
-<tr><td width="80">0x20000</td><td>attacking target</td></tr>
-<tr><td width="80">0x40000</td><td>cannot fire at target (i.e. weapon remounting)</td></tr>
-<tr><td width="80">0x80000</td><td>(not used)</td></tr>
-<tr><td width="80">0x100000</td><td>move slowly</td></tr>
-<tr><td width="80">0x200000</td><td>swinging saber (i.e. not able to block)</td></tr>
-<tr><td width="80">0x400000</td><td>(not used)</td></tr>
-<tr><td width="80">0x800000</td><td>(not used)</td></tr>
-<tr><td width="80">0x1000000</td><td>(not used)</td></tr>
-<tr><td width="80">0x2000000</td><td>(not used)</td></tr>
-<tr><td width="80">0x4000000</td><td>ignore items, move straight to next node</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>seek gun 0 (conc rifle)</td></tr>
+<tr><td>0x2</td><td>seek gun 1 (raildet)</td></tr>
+<tr><td>0x4</td><td>seek gun 2 (repeater)</td></tr>
+<tr><td>0x8</td><td>seek gun 3 (st rifle)</td></tr>
+<tr><td>0x10</td><td>seek gun 4 (crossbow)</td></tr>
+<tr><td>0x20</td><td>seek energy cells</td></tr>
+<tr><td>0x40</td><td>seek power cells</td></tr>
+<tr><td>0x80</td><td>seek rail charges</td></tr>
+<tr><td>0x100</td><td>seek therm dets</td></tr>
+<tr><td>0x200</td><td>seek seq mines</td></tr>
+<tr><td>0x400</td><td>seek health</td></tr>
+<tr><td>0x800</td><td>seek shields</td></tr>
+<tr><td>0x1000</td><td>running backwards on current path</td></tr>
+<tr><td>0x2000</td><td>seek target (not in use?)</td></tr>
+<tr><td>0x4000</td><td>has target</td></tr>
+<tr><td>0x8000</td><td>under attack</td></tr>
+<tr><td>0x10000</td><td>alive</td></tr>
+<tr><td>0x20000</td><td>attacking target</td></tr>
+<tr><td>0x40000</td><td>cannot fire at target (i.e. weapon remounting)</td></tr>
+<tr><td>0x80000</td><td>(not used)</td></tr>
+<tr><td>0x100000</td><td>move slowly</td></tr>
+<tr><td>0x200000</td><td>swinging saber (i.e. not able to block)</td></tr>
+<tr><td>0x400000</td><td>(not used)</td></tr>
+<tr><td>0x800000</td><td>(not used)</td></tr>
+<tr><td>0x1000000</td><td>(not used)</td></tr>
+<tr><td>0x2000000</td><td>(not used)</td></tr>
+<tr><td>0x4000000</td><td>ignore items, move straight to next node</td></tr>
 </table>
 <h3>Path Requirements</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Requires CTF red key</td></tr>
-<tr><td width="80">0x2</td><td>Requires CTF gold key</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Requires CTF red key</td></tr>
+<tr><td>0x2</td><td>Requires CTF gold key</td></tr>
 </table>
 <h3>Special Nodes</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>full stop (apparently not implemented yet)</td></tr>
-<tr><td width="80">0x2</td><td>slow</td></tr>
-<tr><td width="80">0x4</td><td>jump forward</td></tr>
-<tr><td width="80">0x8</td><td>jump backward</td></tr>
-<tr><td width="80">0x10</td><td>lay mine</td></tr>
-<tr><td width="80">0x20</td><td>activate forward</td></tr>
-<tr><td width="80">0x40</td><td>activate backward</td></tr>
-<tr><td width="80">0x80</td><td>(not used)</td></tr>
-<tr><td width="80">0x100</td><td>(not used)</td></tr>
-<tr><td width="80">0x200</td><td>run fast</td></tr>
-<tr><td width="80">0x400</td><td>ignore items, move straight to next node</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>full stop (apparently not implemented yet)</td></tr>
+<tr><td>0x2</td><td>slow</td></tr>
+<tr><td>0x4</td><td>jump forward</td></tr>
+<tr><td>0x8</td><td>jump backward</td></tr>
+<tr><td>0x10</td><td>lay mine</td></tr>
+<tr><td>0x20</td><td>activate forward</td></tr>
+<tr><td>0x40</td><td>activate backward</td></tr>
+<tr><td>0x80</td><td>(not used)</td></tr>
+<tr><td>0x100</td><td>(not used)</td></tr>
+<tr><td>0x200</td><td>run fast</td></tr>
+<tr><td>0x400</td><td>ignore items, move straight to next node</td></tr>
 </table>
 <h3>Navigation Special Nodes</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>Ignore node when finding nearest node for lost bot</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Ignore node when finding nearest node for lost bot</td></tr>
 </table>
 <h3>Force powers</h3>
 <table width="100%">
-<tr><td width="80">0x1</td><td>speed</td></tr>
-<tr><td width="80">0x2</td><td>jump</td></tr>
-<tr><td width="80">0x4</td><td>pull</td></tr>
-<tr><td width="80">0x8</td><td>seeing</td></tr>
-<tr><td width="80">0x10</td><td>healing</td></tr>
-<tr><td width="80">0x20</td><td>persuasion</td></tr>
-<tr><td width="80">0x40</td><td>blinding</td></tr>
-<tr><td width="80">0x80</td><td>absorb</td></tr>
-<tr><td width="80">0x100</td><td>protection</td></tr>
-<tr><td width="80">0x200</td><td>throw</td></tr>
-<tr><td width="80">0x400</td><td>grip</td></tr>
-<tr><td width="80">0x800</td><td>lightning</td></tr>
-<tr><td width="80">0x1000</td><td>destruction</td></tr>
-<tr><td width="80">0x2000</td><td>deadly sight</td></tr>
-<tr><td width="80">0x4000</td><td>lightside surge</td></tr>
-<tr><td width="80">0x8000</td><td>darkside surge</td></tr>
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>speed</td></tr>
+<tr><td>0x2</td><td>jump</td></tr>
+<tr><td>0x4</td><td>pull</td></tr>
+<tr><td>0x8</td><td>seeing</td></tr>
+<tr><td>0x10</td><td>healing</td></tr>
+<tr><td>0x20</td><td>persuasion</td></tr>
+<tr><td>0x40</td><td>blinding</td></tr>
+<tr><td>0x80</td><td>absorb</td></tr>
+<tr><td>0x100</td><td>protection</td></tr>
+<tr><td>0x200</td><td>throw</td></tr>
+<tr><td>0x400</td><td>grip</td></tr>
+<tr><td>0x800</td><td>lightning</td></tr>
+<tr><td>0x1000</td><td>destruction</td></tr>
+<tr><td>0x2000</td><td>deadly sight</td></tr>
+<tr><td>0x4000</td><td>lightside surge</td></tr>
+<tr><td>0x8000</td><td>darkside surge</td></tr>
 </table>
 
       <!-- end body -->
