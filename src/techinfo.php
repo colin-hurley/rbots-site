@@ -255,13 +255,13 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x2000000</td><td>(not used)</td></tr>
 <tr><td>0x4000000</td><td>ignore items, move straight to next node</td></tr>
 </table>
-<h3>Path Requirements</h3>
+<h3>Path Requirements (path cog)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Requires CTF red key</td></tr>
 <tr><td>0x2</td><td>Requires CTF gold key</td></tr>
 </table>
-<h3>Special Nodes</h3>
+<h3>Special Mode (special cogs)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>full stop (apparently not implemented yet)</td></tr>
@@ -276,12 +276,18 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x200</td><td>run fast</td></tr>
 <tr><td>0x400</td><td>ignore items, move straight to next node</td></tr>
 </table>
-<h3>Navigation Special Nodes</h3>
+<h3>Arrival Mode (arrival cog)</h3>
+<table width="100%">
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Wait for arrival if running forward</td></tr>
+<tr><td>0x2</td><td>Wait for arrival if running backward</td></tr>
+</table>
+<h3>Navigation Special Mode (nav special cog)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Ignore node when finding nearest node for lost bot</td></tr>
 </table>
-<h3>Force powers</h3>
+<h3>Force powers (srv force cog)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>speed</td></tr>
