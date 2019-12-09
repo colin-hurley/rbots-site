@@ -122,7 +122,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>1003</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>10000</td><td>Bot requests new position</td><td>Sent from srv to nav</td></tr>
 <tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
-<tr><td>11000</td><td>New position response</td><td>Sent from nav to bot</td></tr>
+<tr><td>11000</td><td>New position response (part 1)</td><td>Sent from nav to bot</td></tr>
+<tr><td>11001</td><td>New position response (part 2)</td><td>Sent from nav to bot</td></tr>
 <tr><td>11010</td><td>Bot arrived at node</td><td>Broadcast from srv</td></tr>
 <tr><td>11020</td><td>Special info</td><td>Sent to srv/srv2</td></tr>
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
