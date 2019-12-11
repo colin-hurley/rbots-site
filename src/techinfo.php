@@ -142,6 +142,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>12013</td><td>Set backpack info (part 4)</td><td>Sent from srv2 or player to backpack</td></tr>
 <tr><td>12200</td><td>Bot touched CTF flag</td><td>Sent from srv2 to CTF</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
+<tr><td>13100</td><td>Path info request</td><td>Sent from path to pathinfo</td></tr>
+<tr><td>13110</td><td>Path info response</td><td>Sent from pathinfo to path</td></tr>
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>100000</td><td>Request bot info update</td><td>Sent from srv to srv2</td></tr>
 <tr><td>100001</td><td>Bot info update response (part 1)</td><td>Sent from srv2 to srv</td></tr>
