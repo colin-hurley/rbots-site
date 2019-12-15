@@ -120,17 +120,12 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>1001</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>1002</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>1003</td><td>Used by CTF</td><td>CTF</td></tr>
-<tr><td>10000</td><td>Bot requests new position</td><td>Sent from srv to nav</td></tr>
 <tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
-<tr><td>11000</td><td>New position response (part 1)</td><td>Sent from nav to bot</td></tr>
-<tr><td>11001</td><td>New position response (part 2)</td><td>Sent from nav to bot</td></tr>
 <tr><td>11010</td><td>Bot arrived at node</td><td>Broadcast from srv</td></tr>
 <tr><td>11020</td><td>Special info</td><td>Sent to srv/srv2</td></tr>
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
-<tr><td>11060</td><td>Request for special nav info</td><td>Broadcast from nav</td></tr>
-<tr><td>11070</td><td>Response for special nav info</td><td>Sent to nav</td></tr>
 <tr><td>12000</td><td>Request backpack info</td><td>Sent from srv2 to backpack</td></tr>
 <tr><td>12001</td><td>Backpack info response (part 1)</td><td>Sent from backpack to srv2</td></tr>
 <tr><td>12002</td><td>Backpack info response (part 2)</td><td>Sent from backpack to srv2</td></tr>
@@ -142,8 +137,18 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>12013</td><td>Set backpack info (part 4)</td><td>Sent from srv2 or player to backpack</td></tr>
 <tr><td>12200</td><td>Bot touched CTF flag</td><td>Sent from srv2 to CTF</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
+<tr><td>13000</td><td>New position request</td><td>Sent from srv to nav</td></tr>
+<tr><td>13010</td><td>New position response (part 1)</td><td>Sent from nav to srv (and srv2)</td></tr>
+<tr><td>13011</td><td>New position response (part 2)</td><td>Sent from nav to srv</td></tr>
+<tr><td>13012</td><td>New position response (part 3)</td><td>Sent from nav to srv</td></tr>
+<tr><td>13020</td><td>Path data request</td><td>Sent from nav to path</td></tr>
+<tr><td>13030</td><td>Path data response</td><td>Sent from path to nav</td></tr>
+<tr><td>13040</td><td>Path node data request</td><td>Sent from nav to path</td></tr>
+<tr><td>13050</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
 <tr><td>13100</td><td>Path info request</td><td>Sent from path to pathinfo</td></tr>
 <tr><td>13110</td><td>Path info response</td><td>Sent from pathinfo to path</td></tr>
+<tr><td>13120</td><td>Special nav info request</td><td>Broadcast from nav</td></tr>
+<tr><td>13130</td><td>Special nav info response</td><td>Sent to nav</td></tr>
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>100000</td><td>Request bot info update</td><td>Sent from srv to srv2</td></tr>
 <tr><td>100001</td><td>Bot info update response (part 1)</td><td>Sent from srv2 to srv</td></tr>
