@@ -149,6 +149,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>13110</td><td>Path info response</td><td>Sent from pathinfo to path</td></tr>
 <tr><td>13120</td><td>Special nav info request</td><td>Broadcast from nav</td></tr>
 <tr><td>13130</td><td>Special nav info response</td><td>Sent to nav</td></tr>
+<tr><td>13200</td><td>Set path flag</td><td>Sent to path</td></tr>
+<tr><td>13201</td><td>Clear path flag</td><td>Sent to path</td></tr>
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>100000</td><td>Request bot info update</td><td>Sent from srv to srv2</td></tr>
 <tr><td>100001</td><td>Bot info update response (part 1)</td><td>Sent from srv2 to srv</td></tr>
