@@ -131,7 +131,6 @@ Please don't send them via email as this way everyone can see what others have a
 <center><h2>Levels that need converting</h2></center>
 <p>
 <ul>
-<li>JK - Blades of Death
 <li>MotS - Tree Canopy
 <li>MotS - Hutt Palace
 <li>MotS - Reactor
