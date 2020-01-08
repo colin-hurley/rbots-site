@@ -126,6 +126,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
+<tr><td>11060</td><td>Item special info request</td><td>Broadcast from srv/srv2</td></tr>
+<tr><td>11070</td><td>Item special info response</td><td>Sent to srv/srv2</td></tr>
 <tr><td>12000</td><td>Request backpack info</td><td>Sent from srv2 to backpack</td></tr>
 <tr><td>12001</td><td>Backpack info response (part 1)</td><td>Sent from backpack to srv2</td></tr>
 <tr><td>12002</td><td>Backpack info response (part 2)</td><td>Sent from backpack to srv2</td></tr>
@@ -291,6 +293,12 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Wait for arrival if running forward</td></tr>
 <tr><td>0x2</td><td>Wait for arrival if running backward</td></tr>
+</table>
+<h3>Item Special Mode (item special cog)</h3>
+<table width="100%">
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Ignore item</td></tr>
+<tr><td>0x2</td><td>Skip LOS check when picking up item</td></tr>
 </table>
 <h3>Navigation Special Mode (nav special cog)</h3>
 <table width="100%">
