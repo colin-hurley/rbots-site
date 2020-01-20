@@ -265,7 +265,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x800000</td><td>(not used)</td></tr>
 <tr><td>0x1000000</td><td>(not used)</td></tr>
 <tr><td>0x2000000</td><td>(not used)</td></tr>
-<tr><td>0x4000000</td><td>ignore items, move straight to next node</td></tr>
+<tr><td>0x4000000</td><td>item seeking disabled - bot will not stray from path to find items (bot will still pick up items along the path)</td></tr>
+<tr><td>0x8000000</td><td>combat roaming disabled - bot will not stray from path to engage in combat (bot will still attack enemies along the path)</td></tr>
 </table>
 <h3>Path Requirements (path cog)</h3>
 <table width="100%">
@@ -286,7 +287,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x80</td><td>(not used)</td></tr>
 <tr><td>0x100</td><td>(not used)</td></tr>
 <tr><td>0x200</td><td>run fast</td></tr>
-<tr><td>0x400</td><td>ignore items, move straight to next node</td></tr>
+<tr><td>0x400</td><td>disable item seeking, move straight to next node</td></tr>
+<tr><td>0x800</td><td>disable combat roaming, move straight to next node</td></tr>
 </table>
 <h3>Arrival Mode (arrival cog)</h3>
 <table width="100%">
