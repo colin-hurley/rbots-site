@@ -112,9 +112,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>910</td><td>Add bot</td><td>Sent from hotkey to startup</td></tr>
 <tr><td>920</td><td>Remove bot</td><td>Sent from hotkey to startup</td></tr>
 <tr><td>930</td><td>Set Difficulty level</td><td>Sent from hotkey to startup</td></tr>
+<tr><td>949</td><td>Dead bot being removed before respawn</td><td>Sent from startup to botcam</td></tr>
 <tr><td>950</td><td>Bot respawned</td><td>Broadcast from srv</td></tr>
-<tr><td>960</td><td>Query thing number</td><td>Sent to srv</td></tr>
-<tr><td>970</td><td>Return thing number</td><td>Sent from srv</td></tr>
 <tr><td>990</td><td>Player killed by bot</td><td>Sent from player to startup</td></tr>
 <tr><td>1000</td><td>Bot killed</td><td>Broadcast from srv</td></tr>
 <tr><td>1001</td><td>Used by CTF</td><td>CTF</td></tr>
@@ -126,8 +125,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
-<tr><td>11060</td><td>Item special info request</td><td>Broadcast from srv/srv2</td></tr>
-<tr><td>11070</td><td>Item special info response</td><td>Sent to srv/srv2</td></tr>
 <tr><td>12000</td><td>Request backpack info</td><td>Sent from srv2 to backpack</td></tr>
 <tr><td>12001</td><td>Backpack info response (part 1)</td><td>Sent from backpack to srv2</td></tr>
 <tr><td>12002</td><td>Backpack info response (part 2)</td><td>Sent from backpack to srv2</td></tr>
