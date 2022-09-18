@@ -116,7 +116,6 @@ Please don't send them via email as this way everyone can see what others have a
 <li>Sometimes they just walk into walls
 <li>Appear not to block that many blaster shots
 <li>Sometimes JK will crash when lots of bots are in the game or when using the 'endgame' command
-<li>The botcam takes too long to switch back to the player
 <li>Create built-in Glowsabers for the players to use
 <li>Attempts to walk through force fields
 <li>The game will not end when a bot reaches the score limit, only when a human player reaches it
@@ -140,7 +139,7 @@ Please don't send them via email as this way everyone can see what others have a
 <li>MotS - Cloud City
 <li>MotS - Tibanna Mining Outpost
 <li>MotS - Imperial Fortress
-<li>MotS - Imperial Traing Facility
+<li>MotS - Imperial Training Facility
 <li>MotS - Reactor Coolant Facility
 </ul>
 
