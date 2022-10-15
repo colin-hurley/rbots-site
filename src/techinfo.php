@@ -156,7 +156,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>100002</td><td>Bot info update response (part 2)</td><td>Sent from srv2 to srv</td></tr>
 <tr><td>100003</td><td>Bot damage update</td><td>Sent from srv to srv2</td></tr>
 <tr><td>101000</td><td>Bot changed its weapon</td><td>Sent from srv2 to srv</td></tr>
-<tr><td>101010</td><td>Bot picked up an item</td><td>Sent from srv2 to srv</td></tr>
 <tr><td>101020</td><td>Bot weapon was fired</td><td>Sent from srv2 to srv</td></tr>
 <tr><td>101030</td><td>Bot weapon was force-pulled</td><td>Sent from srv-force to srv2</td></tr>
 <tr><td>101040</td><td>Bot picked up mana or force surge powerup</td><td>Sent from srv2 to srv-force</td></tr>
