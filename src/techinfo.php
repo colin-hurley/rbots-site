@@ -107,21 +107,21 @@ This document is intended for use as an aide for those who wish to study the int
 <table>
 <tr><th width="80" align="left">Trigger</th><th width="350" align="left">Description</th><th align="left">Sender/Receiver</th></tr>
 <tr><td>800</td><td>Game options</td><td>Broadcast from startup</td></tr>
-<tr><td>900</td><td>Respawn bot</td><td>Sent from startup to srv</td></tr>
-<tr><td>901</td><td>Kill bot and remove from game</td><td>Sent from startup to srv</td></tr>
 <tr><td>910</td><td>Add bot</td><td>Sent from hotkey to startup</td></tr>
 <tr><td>920</td><td>Remove bot</td><td>Sent from hotkey to startup</td></tr>
 <tr><td>930</td><td>Set Difficulty level</td><td>Sent from hotkey to startup</td></tr>
 <tr><td>949</td><td>Dead bot being removed before respawn</td><td>Sent from startup to botcam</td></tr>
 <tr><td>950</td><td>Bot respawned</td><td>Broadcast from srv</td></tr>
-<tr><td>990</td><td>Player killed by bot</td><td>Sent from player to startup</td></tr>
-<tr><td>1000</td><td>Bot killed</td><td>Broadcast from srv</td></tr>
+<tr><td>960</td><td>Bot killed</td><td>Broadcast from srv</td></tr>
+<tr><td>961</td><td>Player killed</td><td>Broadcast from player</td></tr>
+<tr><td>970</td><td>Bot joined the game</td><td>Broadcast from srv</td></tr>
+<tr><td>971</td><td>Bot left the game</td><td>Broadcast from srv</td></tr>
 <tr><td>1001</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>1002</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>1003</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>11010</td><td>Bot arrived at node</td><td>Broadcast from srv</td></tr>
-<tr><td>11020</td><td>Special info</td><td>Sent to srv/srv2</td></tr>
+<tr><td>11020</td><td>Special info</td><td>Sent to srv/srv-weapons</td></tr>
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
@@ -137,13 +137,14 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>12200</td><td>Bot touched CTF flag</td><td>Sent from srv2 to CTF</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
 <tr><td>13000</td><td>New position request</td><td>Sent from srv to nav</td></tr>
-<tr><td>13010</td><td>New position response (part 1)</td><td>Sent from nav to srv (and srv2)</td></tr>
+<tr><td>13010</td><td>New position response (part 1)</td><td>Sent from nav to srv</td></tr>
 <tr><td>13011</td><td>New position response (part 2)</td><td>Sent from nav to srv</td></tr>
 <tr><td>13012</td><td>New position response (part 3)</td><td>Sent from nav to srv</td></tr>
 <tr><td>13020</td><td>Path data request</td><td>Sent from nav to path</td></tr>
 <tr><td>13030</td><td>Path data response</td><td>Sent from path to nav</td></tr>
 <tr><td>13040</td><td>Path node data request</td><td>Sent from nav to path</td></tr>
 <tr><td>13050</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
+<tr><td>13051</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
 <tr><td>13100</td><td>Path info request</td><td>Sent from path to pathinfo</td></tr>
 <tr><td>13110</td><td>Path info response</td><td>Sent from pathinfo to path</td></tr>
 <tr><td>13120</td><td>Special nav info request</td><td>Broadcast from nav</td></tr>
@@ -151,21 +152,13 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>13200</td><td>Set path flag</td><td>Sent to path</td></tr>
 <tr><td>13201</td><td>Clear path flag</td><td>Sent to path</td></tr>
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
-<tr><td>100000</td><td>Request bot info update</td><td>Sent from srv to srv2</td></tr>
-<tr><td>100001</td><td>Bot info update response (part 1)</td><td>Sent from srv2 to srv</td></tr>
-<tr><td>100002</td><td>Bot info update response (part 2)</td><td>Sent from srv2 to srv</td></tr>
-<tr><td>100003</td><td>Bot damage update</td><td>Sent from srv to srv2</td></tr>
-<tr><td>101000</td><td>Bot changed its weapon</td><td>Sent from srv2 to srv</td></tr>
-<tr><td>101020</td><td>Bot weapon was fired</td><td>Sent from srv2 to srv</td></tr>
-<tr><td>101030</td><td>Bot weapon was force-pulled</td><td>Sent from srv-force to srv2</td></tr>
-<tr><td>101040</td><td>Bot picked up mana or force surge powerup</td><td>Sent from srv2 to srv-force</td></tr>
 <tr><td>101050</td><td>Request bot with highest score</td><td>Sent to startup</td></tr>
 <tr><td>101051</td><td>High scorer response</td><td>Sent from startup</td></tr>
 <tr><td>101060</td><td>Create new bot thing</td><td>Sent from srv to skin</td></tr>
 <tr><td>101061</td><td>Created bot response</td><td>Sent from skin to srv</td></tr>
 <tr><td>101062</td><td>Change bot weapon mesh</td><td>Sent from srv to skin</td></tr>
 <tr><td>101999</td><td>Force power used against bot or player (i.e. the 'skill' trigger)</td><td>Sent from player's force cog or srv-force to player or srv-force</td></tr>
-<tr><td>120000</td><td>Update bot target mask</td><td>Sent from hotkey to srv2</td></tr>
+<tr><td>120000</td><td>Update bot target mask</td><td>Sent from hotkey to srv</td></tr>
 <tr><td>1852000</td><td>Cog registers for auto-discovery</td><td>Broadcast from any discoverable cog type</td></tr>
 </table>
 <h3>Armed Mode</h3>
@@ -184,7 +177,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x1</td><td>Allow guns</td></tr>	
 <tr><td>0x2</td><td>Allow sabers</td></tr>
 <tr><td>0x4</td><td>Allow force</td></tr>
-<tr><td>0x8</td><td>Teams</td></tr>
 </table>
 <h3>Respawn Mask (startup cog)</h3>
 <table width="100%">
@@ -232,37 +224,42 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x10</td><td>Spawn point cannot be used by team 3 (blue)</td></tr>
 <tr><td>0x20</td><td>Spawn point cannot be used by team 4 (green)</td></tr>
 </table>
-<h3>Botmode</h3>
+<h3>Bot Mode (srv cog)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
-<tr><td>0x1</td><td>seek gun 0 (conc rifle)</td></tr>
-<tr><td>0x2</td><td>seek gun 1 (raildet)</td></tr>
-<tr><td>0x4</td><td>seek gun 2 (repeater)</td></tr>
-<tr><td>0x8</td><td>seek gun 3 (st rifle)</td></tr>
-<tr><td>0x10</td><td>seek gun 4 (crossbow)</td></tr>
-<tr><td>0x20</td><td>seek energy cells</td></tr>
-<tr><td>0x40</td><td>seek power cells</td></tr>
-<tr><td>0x80</td><td>seek rail charges</td></tr>
-<tr><td>0x100</td><td>seek therm dets</td></tr>
-<tr><td>0x200</td><td>seek seq mines</td></tr>
-<tr><td>0x400</td><td>seek health</td></tr>
-<tr><td>0x800</td><td>seek shields</td></tr>
+<tr><td>0x1</td><td>(not used)</td></tr>
+<tr><td>0x2</td><td>(not used)</td></tr>
+<tr><td>0x4</td><td>(not used)</td></tr>
+<tr><td>0x8</td><td>(not used)</td></tr>
+<tr><td>0x10</td><td>(not used)</td></tr>
+<tr><td>0x20</td><td>(not used)</td></tr>
+<tr><td>0x40</td><td>(not used)</td></tr>
+<tr><td>0x80</td><td>(not used)</td></tr>
+<tr><td>0x100</td><td>(not used)</td></tr>
+<tr><td>0x200</td><td>(not used)</td></tr>
+<tr><td>0x400</td><td>(not used)</td></tr>
+<tr><td>0x800</td><td>(not used)</td></tr>
 <tr><td>0x1000</td><td>running backwards on current path</td></tr>
-<tr><td>0x2000</td><td>seek target (not in use?)</td></tr>
-<tr><td>0x4000</td><td>has target</td></tr>
-<tr><td>0x8000</td><td>under attack</td></tr>
-<tr><td>0x10000</td><td>alive</td></tr>
-<tr><td>0x20000</td><td>attacking target</td></tr>
-<tr><td>0x40000</td><td>cannot fire at target (i.e. weapon remounting)</td></tr>
-<tr><td>0x80000</td><td>(not used)</td></tr>
+<tr><td>0x2000</td><td>(not used)</td></tr>
+<tr><td>0x4000</td><td>(not used)</td></tr>
+<tr><td>0x8000</td><td>(not used)</td></tr>
+<tr><td>0x10000</td><td>(not used)</td></tr>
+<tr><td>0x20000</td><td>(not used)</td></tr>
+<tr><td>0x40000</td><td>(not used)</td></tr>
+<tr><td>0x80000</td><td>bot disabled</td></tr>
 <tr><td>0x100000</td><td>move slowly</td></tr>
-<tr><td>0x200000</td><td>swinging saber (i.e. not able to block)</td></tr>
+<tr><td>0x200000</td><td>(not used)</td></tr>
 <tr><td>0x400000</td><td>(not used)</td></tr>
 <tr><td>0x800000</td><td>(not used)</td></tr>
 <tr><td>0x1000000</td><td>(not used)</td></tr>
 <tr><td>0x2000000</td><td>(not used)</td></tr>
 <tr><td>0x4000000</td><td>item seeking disabled - bot will not stray from path to find items (bot will still pick up items along the path)</td></tr>
 <tr><td>0x8000000</td><td>combat roaming disabled - bot will not stray from path to engage in combat (bot will still attack enemies along the path)</td></tr>
+</table>
+<h3>Weapon Mode (srv weapons cog)</h3>
+<table width="100%">
+<tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
+<tr><td>0x1</td><td>Weapon cooldown (bot cannot fire, block with saber, or change weapons until after the cooldown)</td></tr>
 </table>
 <h3>Path Requirements (path cog)</h3>
 <table width="100%">
