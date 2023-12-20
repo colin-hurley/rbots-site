@@ -112,15 +112,11 @@ Please don't send them via email as this way everyone can see what others have a
 <li>Bots do not avoid mines
 <li>Bots do not move to an intercept vector for target (for higher difficulty settings)
 <li>Sometimes they jump off the catwalk in Valley of the Jedi
-<li>Bots do not see the lightning trap in CO
+<li>Bots do not see the lightning trap in Canyon Oasis
 <li>Sometimes they just walk into walls
-<li>Appear not to block that many blaster shots
 <li>Sometimes JK will crash when lots of bots are in the game or when using the 'endgame' command
-<li>Create built-in Glowsabers for the players to use
 <li>Attempts to walk through force fields
 <li>The game will not end when a bot reaches the score limit, only when a human player reaches it
-<li>Score limit within 'Arena of Light and Dark' not working correctly
-<li>Picking up a flag in CTF games is inconsistent
 <li>Teamplay - bot will shoot a conc or raildet at an opponent too close to you
 <li>Teamplay - team mates use TD trap in Nar Shaddaa against you
 <li>Rbots is unstable when trying to run over a network or the internet.
@@ -133,7 +129,6 @@ Please don't send them via email as this way everyone can see what others have a
 <li>MotS - Tree Canopy
 <li>MotS - Hutt Palace
 <li>MotS - Reactor
-<li>MotS - Moisture Vaporator Facility
 <li>MotS - Cargo Ship
 <li>MotS - Tatooine Homestead
 <li>MotS - Cloud City

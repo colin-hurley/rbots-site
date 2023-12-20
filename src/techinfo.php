@@ -103,6 +103,19 @@
 This document is intended for use as an aide for those who wish to study the intricate details of the code. It is not designed to be used as a tutorial.
 </p>
 <p>
+<h3>Cog Type ID</h3>
+<table>
+<tr><th width="80" align="left">Type ID</th><th width="350" align="left">Description</th><th align="left">Implemented By</th></tr>
+<tr><td>1010</td><td>System</td><td>rbot-startup.cog</td></tr>
+<tr><td>1020</td><td>Bot Srv</td><td>rbot-srv.cog</td></tr>
+<tr><td>1022</td><td>Bot Srv (Force)</td><td>rbot-srv-force.cog</td></tr>
+<tr><td>1023</td><td>Bot Srv (Weapons)</td><td>rbot-srv-weapons.cog</td></tr>
+<tr><td>1030</td><td>Bot Skin</td><td>rbot-skin.cog</td></tr>
+<tr><td>1041</td><td>Item Special Info</td><td>rbot-item-special.cog</td></tr>
+<tr><td>1050</td><td>Backpack</td><td>rbot-backpack.cog</td></tr>
+<tr><td>2010</td><td>TODO</td><td>rbot-admin-selection.cog</td></tr>
+<tr><td>3000</td><td>Customizer</td><td>ctf_main.cog, kfy_main.cog</td></tr>
+</table>
 <h3>Triggers</h3>
 <table>
 <tr><th width="80" align="left">Trigger</th><th width="350" align="left">Description</th><th align="left">Sender/Receiver</th></tr>
@@ -116,7 +129,7 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>961</td><td>Player killed</td><td>Broadcast from player</td></tr>
 <tr><td>970</td><td>Bot joined the game</td><td>Broadcast from srv</td></tr>
 <tr><td>971</td><td>Bot left the game</td><td>Broadcast from srv</td></tr>
-<tr><td>1001</td><td>Used by CTF</td><td>CTF</td></tr>
+<tr><td>1001</td><td>Used by CTF/KFY</td><td>CTF/KFY</td></tr>
 <tr><td>1002</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>1003</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
@@ -125,28 +138,15 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
-<tr><td>12000</td><td>Request backpack info</td><td>Sent from srv2 to backpack</td></tr>
-<tr><td>12001</td><td>Backpack info response (part 1)</td><td>Sent from backpack to srv2</td></tr>
-<tr><td>12002</td><td>Backpack info response (part 2)</td><td>Sent from backpack to srv2</td></tr>
-<tr><td>12003</td><td>Backpack info response (part 3)</td><td>Sent from backpack to srv2</td></tr>
-<tr><td>12004</td><td>Backpack info response (part 4)</td><td>Sent from backpack to srv2</td></tr>
-<tr><td>12010</td><td>Set backpack info (part 1)</td><td>Sent from srv2 or player to backpack</td></tr>
-<tr><td>12011</td><td>Set backpack info (part 2)</td><td>Sent from srv2 or player to backpack</td></tr>
-<tr><td>12012</td><td>Set backpack info (part 3)</td><td>Sent from srv2 or player to backpack</td></tr>
-<tr><td>12013</td><td>Set backpack info (part 4)</td><td>Sent from srv2 or player to backpack</td></tr>
-<tr><td>12200</td><td>Bot touched CTF flag</td><td>Sent from srv2 to CTF</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
+<tr><td>12220</td><td>Update KFY info</td><td>Broadcast from KFY</td></tr>
 <tr><td>13000</td><td>New position request</td><td>Sent from srv to nav</td></tr>
-<tr><td>13010</td><td>New position response (part 1)</td><td>Sent from nav to srv</td></tr>
-<tr><td>13011</td><td>New position response (part 2)</td><td>Sent from nav to srv</td></tr>
-<tr><td>13012</td><td>New position response (part 3)</td><td>Sent from nav to srv</td></tr>
+<tr><td>13010</td><td>New position response</td><td>Sent from nav to srv</td></tr>
 <tr><td>13020</td><td>Path data request</td><td>Sent from nav to path</td></tr>
 <tr><td>13030</td><td>Path data response</td><td>Sent from path to nav</td></tr>
 <tr><td>13040</td><td>Path node data request</td><td>Sent from nav to path</td></tr>
 <tr><td>13050</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
 <tr><td>13051</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
-<tr><td>13100</td><td>Path info request</td><td>Sent from path to pathinfo</td></tr>
-<tr><td>13110</td><td>Path info response</td><td>Sent from pathinfo to path</td></tr>
 <tr><td>13120</td><td>Special nav info request</td><td>Broadcast from nav</td></tr>
 <tr><td>13130</td><td>Special nav info response</td><td>Sent to nav</td></tr>
 <tr><td>13200</td><td>Set path flag</td><td>Sent to path</td></tr>
@@ -154,9 +154,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>101050</td><td>Request bot with highest score</td><td>Sent to startup</td></tr>
 <tr><td>101051</td><td>High scorer response</td><td>Sent from startup</td></tr>
-<tr><td>101060</td><td>Create new bot thing</td><td>Sent from srv to skin</td></tr>
-<tr><td>101061</td><td>Created bot response</td><td>Sent from skin to srv</td></tr>
-<tr><td>101062</td><td>Change bot weapon mesh</td><td>Sent from srv to skin</td></tr>
 <tr><td>101999</td><td>Force power used against bot or player (i.e. the 'skill' trigger)</td><td>Sent from player's force cog or srv-force to player or srv-force</td></tr>
 <tr><td>120000</td><td>Update bot target mask</td><td>Sent from hotkey to srv</td></tr>
 <tr><td>1852000</td><td>Cog registers for auto-discovery</td><td>Broadcast from any discoverable cog type</td></tr>
@@ -227,7 +224,7 @@ This document is intended for use as an aide for those who wish to study the int
 <h3>Bot Mode (srv cog)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
-<tr><td>0x1</td><td>(not used)</td></tr>
+<tr><td>0x1</td><td>Bot has left the path to seek items</td></tr>
 <tr><td>0x2</td><td>(not used)</td></tr>
 <tr><td>0x4</td><td>(not used)</td></tr>
 <tr><td>0x8</td><td>(not used)</td></tr>
