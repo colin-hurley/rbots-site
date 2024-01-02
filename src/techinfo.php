@@ -274,7 +274,7 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x10</td><td>lay mine</td></tr>
 <tr><td>0x20</td><td>activate forward</td></tr>
 <tr><td>0x40</td><td>activate backward</td></tr>
-<tr><td>0x80</td><td>(not used)</td></tr>
+<tr><td>0x80</td><td>disable cliff checks, allow bot to walk off cliffs</td></tr>
 <tr><td>0x100</td><td>(not used)</td></tr>
 <tr><td>0x200</td><td>run fast</td></tr>
 <tr><td>0x400</td><td>disable item seeking, move straight to next node</td></tr>

@@ -132,7 +132,6 @@ Please don't send them via email as this way everyone can see what others have a
 <li>MotS - Cargo Ship
 <li>MotS - Tatooine Homestead
 <li>MotS - Cloud City
-<li>MotS - Tibanna Mining Outpost
 <li>MotS - Imperial Fortress
 <li>MotS - Imperial Training Facility
 <li>MotS - Reactor Coolant Facility
