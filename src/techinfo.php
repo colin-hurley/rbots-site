@@ -113,6 +113,9 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>1030</td><td>Bot Skin</td><td>rbot-skin.cog</td></tr>
 <tr><td>1041</td><td>Item Special Info</td><td>rbot-item-special.cog</td></tr>
 <tr><td>1050</td><td>Backpack</td><td>rbot-backpack.cog</td></tr>
+<tr><td>1060</td><td>Navigation</td><td>rbot-nav.cog</td></tr>
+<tr><td>1061</td><td>Navigation Special Info</td><td>rbot-nav-special.cog</td></tr>
+<tr><td>1070</td><td>Path</td><td>rbot-path.cog</td></tr>
 <tr><td>2010</td><td>TODO</td><td>rbot-admin-selection.cog</td></tr>
 <tr><td>3000</td><td>Customizer</td><td>ctf_main.cog, kfy_main.cog</td></tr>
 </table>
@@ -140,17 +143,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
 <tr><td>12220</td><td>Update KFY info</td><td>Broadcast from KFY</td></tr>
-<tr><td>13000</td><td>New position request</td><td>Sent from srv to nav</td></tr>
-<tr><td>13010</td><td>New position response</td><td>Sent from nav to srv</td></tr>
-<tr><td>13020</td><td>Path data request</td><td>Sent from nav to path</td></tr>
-<tr><td>13030</td><td>Path data response</td><td>Sent from path to nav</td></tr>
-<tr><td>13040</td><td>Path node data request</td><td>Sent from nav to path</td></tr>
-<tr><td>13050</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
-<tr><td>13051</td><td>Path node data response</td><td>Sent from path to nav</td></tr>
-<tr><td>13120</td><td>Special nav info request</td><td>Broadcast from nav</td></tr>
-<tr><td>13130</td><td>Special nav info response</td><td>Sent to nav</td></tr>
-<tr><td>13200</td><td>Set path flag</td><td>Sent to path</td></tr>
-<tr><td>13201</td><td>Clear path flag</td><td>Sent to path</td></tr>
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>101050</td><td>Request bot with highest score</td><td>Sent to startup</td></tr>
 <tr><td>101051</td><td>High scorer response</td><td>Sent from startup</td></tr>
