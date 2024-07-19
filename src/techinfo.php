@@ -146,7 +146,6 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>15080</td><td>Update selected bot</td><td>Sent from hotkey to hotkey</td></tr>
 <tr><td>101050</td><td>Request bot with highest score</td><td>Sent to startup</td></tr>
 <tr><td>101051</td><td>High scorer response</td><td>Sent from startup</td></tr>
-<tr><td>101999</td><td>Force power used against bot or player (i.e. the 'skill' trigger)</td><td>Sent from player's force cog or srv-force to player or srv-force</td></tr>
 <tr><td>120000</td><td>Update bot target mask</td><td>Sent from hotkey to srv</td></tr>
 <tr><td>1852000</td><td>Cog registers for auto-discovery</td><td>Broadcast from any discoverable cog type</td></tr>
 </table>
@@ -217,7 +216,7 @@ This document is intended for use as an aide for those who wish to study the int
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Bot has left the path to seek items</td></tr>
-<tr><td>0x2</td><td>(not used)</td></tr>
+<tr><td>0x2</td><td>Item cooldown (bot cannot use an item until after the cooldown)</td></tr>
 <tr><td>0x4</td><td>(not used)</td></tr>
 <tr><td>0x8</td><td>(not used)</td></tr>
 <tr><td>0x10</td><td>(not used)</td></tr>
