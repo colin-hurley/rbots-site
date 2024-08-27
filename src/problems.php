@@ -107,7 +107,6 @@ Please don't send them via email as this way everyone can see what others have a
 <center><h2>Current problems that need work</h2></center>
 <p>
 <ul>
-<li>Saber fighting is still not quite right yet
 <li>Bots only randomly choose which force power to use at any one time
 <li>Bots do not avoid mines
 <li>Bots do not move to an intercept vector for target (for higher difficulty settings)
@@ -132,8 +131,8 @@ Please don't send them via email as this way everyone can see what others have a
 <li>MotS - Cargo Ship
 <li>MotS - Tatooine Homestead
 <li>MotS - Cloud City
-<li>MotS - Imperial Training Facility
-<li>MotS - Reactor Coolant Facility
+<li>MotS/KFY - Imperial Training Facility
+<li>MotS/KFY - Reactor Coolant Facility
 </ul>
 
 <p>You can of course convert any other level you like, as long as you have the author's permission to do so.</p>
