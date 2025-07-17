@@ -138,7 +138,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>10001</td><td>Used by CTF</td><td>CTF</td></tr>
 <tr><td>11010</td><td>Bot arrived at node</td><td>Broadcast from srv</td></tr>
 <tr><td>11020</td><td>Special info</td><td>Sent to srv/srv-weapons</td></tr>
-<tr><td>11030</td><td>Activate message</td><td>Broadcast from srv</td></tr>
+<tr><td>11031</td><td>Activate surface</td><td>Broadcast from activate and arrival</td></tr>
+<tr><td>11032</td><td>Activate thing</td><td>Broadcast from activate and arrival</td></tr>
 <tr><td>11040</td><td>Wait for arrival message</td><td>Sent to srv</td></tr>
 <tr><td>11050</td><td>Arrival message</td><td>Sent to srv</td></tr>
 <tr><td>12210</td><td>Update CTF info</td><td>Broadcast from CTF</td></tr>
@@ -217,8 +218,8 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Bot has left the path to seek items</td></tr>
 <tr><td>0x2</td><td>Item cooldown (bot cannot use an item until after the cooldown)</td></tr>
-<tr><td>0x4</td><td>(not used)</td></tr>
-<tr><td>0x8</td><td>(not used)</td></tr>
+<tr><td>0x4</td><td>Bot is trying to use the lightsaber to slash open a grate</td></tr>
+<tr><td>0x8</td><td>Bot is allowed to fall without becoming 'lost'</td></tr>
 <tr><td>0x10</td><td>(not used)</td></tr>
 <tr><td>0x20</td><td>(not used)</td></tr>
 <tr><td>0x40</td><td>(not used)</td></tr>
@@ -235,7 +236,7 @@ This document is intended for use as an aide for those who wish to study the int
 <tr><td>0x20000</td><td>(not used)</td></tr>
 <tr><td>0x40000</td><td>(not used)</td></tr>
 <tr><td>0x80000</td><td>bot disabled</td></tr>
-<tr><td>0x100000</td><td>move slowly</td></tr>
+<tr><td>0x100000</td><td>(not used)</td></tr>
 <tr><td>0x200000</td><td>(not used)</td></tr>
 <tr><td>0x400000</td><td>(not used)</td></tr>
 <tr><td>0x800000</td><td>(not used)</td></tr>
@@ -248,6 +249,8 @@ This document is intended for use as an aide for those who wish to study the int
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
 <tr><td>0x1</td><td>Weapon cooldown (bot cannot fire, block with saber, or change weapons until after the cooldown)</td></tr>
+<tr><td>0x2</td><td>(not used)</td></tr>
+<tr><td>0x4</td><td>Bot is trying to use the lightsaber to slash open a grate</td></tr>
 </table>
 <h3>Path Requirements (path cog)</h3>
 <table width="100%">
@@ -258,18 +261,20 @@ This document is intended for use as an aide for those who wish to study the int
 <h3>Special Mode (special cogs)</h3>
 <table width="100%">
 <tr><th width="80" align="left">Flag</th><th align="left">Description</th></tr>
-<tr><td>0x1</td><td>full stop (apparently not implemented yet)</td></tr>
-<tr><td>0x2</td><td>slow</td></tr>
-<tr><td>0x4</td><td>jump forward</td></tr>
-<tr><td>0x8</td><td>jump backward</td></tr>
-<tr><td>0x10</td><td>lay mine</td></tr>
-<tr><td>0x20</td><td>activate forward</td></tr>
-<tr><td>0x40</td><td>activate backward</td></tr>
+<tr><td>0x1</td><td>(not used)</td></tr>
+<tr><td>0x2</td><td>(not used)</td></tr>
+<tr><td>0x4</td><td>(not used)</td></tr>
+<tr><td>0x8</td><td>(not used)</td></tr>
+<tr><td>0x10</td><td>(not used)</td></tr>
+<tr><td>0x20</td><td>(not used)</td></tr>
+<tr><td>0x40</td><td>(not used)</td></tr>
 <tr><td>0x80</td><td>disable cliff checks, allow bot to walk off cliffs</td></tr>
-<tr><td>0x100</td><td>crouch</td></tr>
-<tr><td>0x200</td><td>run fast</td></tr>
+<tr><td>0x100</td><td>(not used)</td></tr>
+<tr><td>0x200</td><td>(not used)</td></tr>
 <tr><td>0x400</td><td>disable item seeking, move straight to next node</td></tr>
 <tr><td>0x800</td><td>disable combat roaming, move straight to next node</td></tr>
+<tr><td>0x1000</td><td>(DEPRECATED) use lightwaber to slash open grate</td></tr>
+<tr><td>0x2000</td><td>disable fall checking, allow bot to fall without becoming 'lost'</td></tr>
 </table>
 <h3>Arrival Mode (arrival cog)</h3>
 <table width="100%">
